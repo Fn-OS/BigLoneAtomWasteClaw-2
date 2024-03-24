@@ -10,37 +10,10 @@
 	var/mob/listeningTo
 	var/zoom_out_amt = 6
 	var/zoom_amt = 10
-	var/last_x = "UNKNOWN"
-	var/last_y = "UNKNOWN"
 
-/obj/item/binoculars/afterattack(atom/A, mob/living/user, adjacent, params) //handles coord obtaining
-	var/obj/item/weapon/maptool/mtool = locate() in user
-	if(mtool)
-		to_chat(user, "Calculating coordinates. Stand still.")
-		A = get_turf(A)
-		last_x = obfuscate_x(A.x)
-		last_y = obfuscate_y(A.y)
-		if(do_after(user, 80, src))
-			to_chat(user, "COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")
-	else
-		to_chat(user, "<span class='warning'>You can't calculate coordinates without proper equipment!</span>")
-
-/obj/item/binoculars/Initialize()
+/obj/item/binoculars/wield(mob/living/user)
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
-
-/obj/item/binoculars/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=8, force_wielded=12)
-
-/obj/item/binoculars/Destroy()
-	listeningTo = null
-	return ..()
-
-/obj/item/binoculars/proc/on_wield(obj/item/source, mob/user)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unwield)
-	RegisterSignal(user, COMSIG_ATOM_DIR_CHANGE, .proc/rotate)
+	RegisterSignal(user, COMSIG_ATOM_DIR_CHANGE, PROC_REF(rotate))
 	listeningTo = user
 	user.visible_message("<span class='notice'>[user] holds [src] up to [user.p_their()] eyes.</span>", "<span class='notice'>You hold [src] up to your eyes.</span>")
 	item_state = "binoculars_wielded"

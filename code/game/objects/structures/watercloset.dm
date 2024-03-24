@@ -309,6 +309,15 @@
 		add_hiddenprint(user)
 	return TRUE
 
+/obj/machinery/shower/Initialize()
+	. = ..()
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+
 /obj/machinery/shower/update_overlays()
 	. = ..()
 	if(on)
@@ -319,10 +328,10 @@
 	// If there was already mist, and the shower was turned off (or made cold): remove the existing mist in 25 sec
 	var/obj/effect/mist/mist = locate() in loc
 	if(!mist && on && watertemp != "freezing")
-		addtimer(CALLBACK(src, .proc/make_mist), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(make_mist)), 5 SECONDS)
 
 	if(mist && (!on || watertemp == "freezing"))
-		addtimer(CALLBACK(src, .proc/clear_mist), 25 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(clear_mist)), 25 SECONDS)
 
 /obj/machinery/shower/proc/make_mist()
 	var/obj/effect/mist/mist = locate() in loc
@@ -344,6 +353,10 @@
 				C.slip(80,null,NO_SLIP_WHEN_WALKING)
 		else if(isobj(AM))
 			wash_obj(AM)
+
+/obj/machinery/shower/proc/on_entered(atom/movable/AM)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(handle_enter), AM)
 
 /obj/machinery/shower/proc/wash_obj(obj/O)
 	. = SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)

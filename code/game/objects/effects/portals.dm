@@ -30,6 +30,13 @@
 	var/last_effect = 0
 	var/force_teleport = FALSE
 
+/obj/effect/portal/Initialize(mapload, _lifespan, obj/effect/portal/_linked, automatic_link, turf/hard_target_override, atmos_link_override)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/effect/portal/anom
 	name = "wormhole"
 	icon = 'icons/obj/objects.dmi'

@@ -14,6 +14,15 @@
 	var/obj/item/assembly/a_left = null
 	var/obj/item/assembly/a_right = null
 
+/obj/item/assembly_holder/Initialize()
+	. = ..()
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+
 /obj/item/assembly_holder/IsAssemblyHolder()
 	return TRUE
 
@@ -63,9 +72,9 @@
 
 /obj/item/assembly_holder/Crossed(atom/movable/AM as mob|obj)
 	if(a_left)
-		a_left.Crossed(AM)
+		INVOKE_ASYNC(a_left, PROC_REF(on_entered), AM)
 	if(a_right)
-		a_right.Crossed(AM)
+		INVOKE_ASYNC(a_right, PROC_REF(on_entered), AM)
 
 /obj/item/assembly_holder/on_found(mob/finder)
 	if(a_left)

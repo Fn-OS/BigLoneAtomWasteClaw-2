@@ -16,7 +16,11 @@
 
 /obj/structure/campfire/Initialize()
 	. = ..()
-	campfire_loop = new(list(src), FALSE)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 
 /obj/structure/campfire/Destroy()
 	SSobj.processing.Remove(src)
@@ -75,7 +79,7 @@
 
 /obj/structure/campfire/Crossed(atom/movable/AM)
 	if(fired)
-		burn_process()
+		INVOKE_ASYNC(src, PROC_REF(burn_process))
 
 /obj/structure/campfire/process()
 	if(fuel <= 0)

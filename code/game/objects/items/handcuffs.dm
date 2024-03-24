@@ -258,6 +258,11 @@
 /obj/item/restraints/legcuffs/beartrap/Initialize()
 	. = ..()
 	icon_state = "[initial(icon_state)][armed]"
+	
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(spring_trap),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/item/restraints/legcuffs/beartrap/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is sticking [user.p_their()] head in the [src.name]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -314,7 +319,7 @@
 
 /obj/item/restraints/legcuffs/beartrap/energy/New()
 	..()
-	addtimer(CALLBACK(src, .proc/dissipate), 100)
+	addtimer(CALLBACK(src, PROC_REF(dissipate)), 100)
 
 /obj/item/restraints/legcuffs/beartrap/energy/proc/dissipate()
 	if(!ismob(loc))

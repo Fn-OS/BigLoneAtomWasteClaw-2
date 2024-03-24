@@ -34,6 +34,11 @@
 		force_open_above()
 		build_signal_listener()
 	update_surrounding()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXIT = PROC_REF(on_exit),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 	return ..()
 
 /obj/structure/stairs/Destroy()
@@ -54,13 +59,17 @@
 		if(S)
 			S.update_icon()
 
-/obj/structure/stairs/Uncross(atom/movable/AM, turf/newloc)
-	if(!newloc || !AM)
-		return ..()
-	if(!isobserver(AM) && isTerminator() && (get_dir(src, newloc) == dir))
-		stair_ascend(AM)
-		return FALSE
-	return ..()
+/obj/structure/stairs/proc/on_exit(datum/source, atom/movable/leaving, direction)
+	SIGNAL_HANDLER
+
+	if(leaving == src)
+		return //Let's not block ourselves.
+
+	if(!isobserver(leaving) && isTerminator() && direction == dir)
+		leaving.set_currently_z_moving(CURRENTLY_Z_ASCENDING)
+		INVOKE_ASYNC(src, PROC_REF(stair_ascend), leaving)
+		leaving.Bump(src)
+		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/stairs/Cross(atom/movable/AM)
 	if(isTerminator() && (get_dir(src, AM) == dir))
@@ -109,7 +118,7 @@
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_TURF_MULTIZ_NEW)
 	var/turf/open/transparent/openspace/T = get_step_multiz(get_turf(src), UP)
-	RegisterSignal(T, COMSIG_TURF_MULTIZ_NEW, .proc/on_multiz_new)
+	RegisterSignal(T, COMSIG_TURF_MULTIZ_NEW, PROC_REF(on_multiz_new))
 	listeningTo = T
 
 /obj/structure/stairs/proc/force_open_above()

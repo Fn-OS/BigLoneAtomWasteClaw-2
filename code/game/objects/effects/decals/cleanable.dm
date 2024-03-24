@@ -27,6 +27,11 @@
 		if(LAZYLEN(diseases_to_add))
 			AddComponent(/datum/component/infective, diseases_to_add)
 
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 //	addtimer(CALLBACK(src, /datum.proc/_AddElement, list(/datum/element/beauty, beauty)), 0) MARKED FOR DEATH, part of emergency delagging, removes the whole system to evaluate on 2023-01-20
 
 /obj/effect/decal/cleanable/proc/replace_decal(obj/effect/decal/cleanable/C) // Returns true if we should give up in favor of the pre-existing decal

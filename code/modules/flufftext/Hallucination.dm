@@ -285,7 +285,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		target.client.images |= fakerune
 	target.playsound_local(wall,'sound/effects/meteorimpact.ogg', 150, 1)
 	bubblegum = new(wall, target)
-	addtimer(CALLBACK(src, .proc/bubble_attack, landing), 10)
+	addtimer(CALLBACK(src, PROC_REF(bubble_attack), landing), 10)
 
 /datum/hallucination/oh_yeah/proc/bubble_attack(turf/landing)
 	var/charged = FALSE //only get hit once
@@ -1070,6 +1070,13 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 /obj/effect/hallucination/danger/lava
 	name = "lava"
 
+/obj/effect/hallucination/danger/lava/Initialize(mapload, _target)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/effect/hallucination/danger/lava/show_icon()
 	image = image('icons/turf/floors/lava.dmi',src,"smooth",layer)
 	image.plane = plane
@@ -1078,11 +1085,19 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 /obj/effect/hallucination/danger/lava/Crossed(atom/movable/AM)
 	if(AM == target)
-		target.adjustStaminaLoss(20)
+		INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living, adjustStaminaLoss), 20)
 		new /datum/hallucination/fire(target)
 
 /obj/effect/hallucination/danger/chasm
 	name = "chasm"
+
+/obj/effect/hallucination/danger/chasm/Initialize(mapload, _target)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 
 /obj/effect/hallucination/danger/chasm/show_icon()
 	image = image('icons/turf/floors/Chasms.dmi',src,"smooth",TURF_LAYER)
@@ -1095,7 +1110,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			return
 		to_chat(target, "<span class='userdanger'>You fall into the chasm!</span>")
 		target.DefaultCombatKnockdown(40)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, target, "<span class='notice'>It's surprisingly shallow.</span>"), 15)
+		addtimer(CALLBACK(GLOBAL_PROC,GLOBAL_PROC_REF(to_chat), target, span_notice("It's surprisingly shallow.")), 15)
 		QDEL_IN(src, 30)
 
 /obj/effect/hallucination/danger/anomaly
@@ -1104,6 +1119,11 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 /obj/effect/hallucination/danger/anomaly/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 
 /obj/effect/hallucination/danger/anomaly/process()
 	if(prob(70))
@@ -1218,13 +1238,13 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	if(target.client)
 		target.client.images |= shock_image
 		target.client.images |= electrocution_skeleton_anim
-	addtimer(CALLBACK(src, .proc/reset_shock_animation), 40)
+	addtimer(CALLBACK(src, PROC_REF(reset_shock_animation)), 40)
 	target.playsound_local(get_turf(src), "sparks", 100, 1)
 	target.staminaloss += 50
 	target.Stun(40)
 	target.jitteriness += 1000
 	target.do_jitter_animation(target.jitteriness)
-	addtimer(CALLBACK(src, .proc/shock_drop), 20)
+	addtimer(CALLBACK(src, PROC_REF(shock_drop)), 20)
 
 /datum/hallucination/shock/proc/reset_shock_animation()
 	if(target.client)

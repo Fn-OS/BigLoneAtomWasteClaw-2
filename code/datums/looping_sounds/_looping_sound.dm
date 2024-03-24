@@ -74,7 +74,9 @@
 	if(!chance || prob(chance))
 		play(get_sound(starttime))
 	if(!timerid)
-		timerid = addtimer(CALLBACK(src, .proc/sound_loop, world.time), mid_length, TIMER_CLIENT_TIME | TIMER_STOPPABLE | TIMER_LOOP)
+		timerid = addtimer(CALLBACK(src, PROC_REF(sound_loop), world.time), mid_length + loop_delay, TIMER_CLIENT_TIME | TIMER_STOPPABLE | TIMER_LOOP)
+	else
+		set_timer_wait(timerid, mid_length + loop_delay)
 
 /datum/looping_sound/proc/play(soundfile)
 	var/list/atoms_cache = output_atoms
@@ -97,9 +99,10 @@
 /datum/looping_sound/proc/on_start()
 	var/start_wait = 0
 	if(start_sound)
-		play(start_sound)
-		start_wait = start_length
-	init_timerid = addtimer(CALLBACK(src, .proc/sound_loop), start_wait, TIMER_CLIENT_TIME | TIMER_STOPPABLE)
+		var/list/sound_start = pickweight(start_sound)
+		play(sound_start)
+		start_wait = sound_start[SL_FILE_LENGTH]
+	init_timerid = addtimer(CALLBACK(src, PROC_REF(sound_loop)), start_wait, TIMER_CLIENT_TIME | TIMER_STOPPABLE)
 
 /datum/looping_sound/proc/on_stop()
 	if(end_sound)

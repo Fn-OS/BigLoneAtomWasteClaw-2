@@ -35,7 +35,7 @@
 	perform(turf_steps,user=user)
 
 /obj/effect/proc_holder/spell/spacetime_dist/after_cast(list/targets)
-	addtimer(CALLBACK(src, .proc/clean_turfs), duration)
+	addtimer(CALLBACK(src, PROC_REF(clean_turfs)), duration)
 
 /obj/effect/proc_holder/spell/spacetime_dist/cast(list/targets, mob/user = usr)
 	effects = list()
@@ -82,6 +82,10 @@
 /obj/effect/cross_action/spacetime_dist/Initialize(mapload)
 	. = ..()
 	setDir(pick(GLOB.cardinals))
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/effect/cross_action/spacetime_dist/proc/walk_link(atom/movable/AM)
 	if(ismob(AM))

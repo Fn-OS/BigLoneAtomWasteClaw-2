@@ -108,7 +108,7 @@
 /mob/living/simple_animal/hostile/handle_automated_movement()
 	. = ..()
 	if(dodging && target && in_melee && isturf(loc) && isturf(target.loc))
-		var/datum/cb = CALLBACK(src,.proc/sidestep)
+		var/datum/cb = CALLBACK(src,PROC_REF(sidestep))
 		if(sidestep_per_cycle > 1) //For more than one just spread them equally - this could changed to some sensible distribution later
 			var/sidestep_delay = SSnpcpool.wait / sidestep_per_cycle
 			for(var/i in 1 to sidestep_per_cycle)
@@ -302,7 +302,7 @@
 //What we do after closing in
 /mob/living/simple_animal/hostile/proc/MeleeAction(patience = TRUE)
 	if(rapid_melee > 1)
-		var/datum/callback/cb = CALLBACK(src, .proc/CheckAndAttack)
+		var/datum/callback/cb = CALLBACK(src, PROC_REF(CheckAndAttack))
 		var/delay = SSnpcpool.wait / rapid_melee
 		for(var/i in 1 to rapid_melee)
 			addtimer(cb, (i - 1)*delay)
@@ -393,7 +393,7 @@
 /mob/living/simple_animal/hostile/proc/Aggro()
 	vision_range = aggro_vision_range
 	if(target && LAZYLEN(emote_taunt) && prob(taunt_chance))
-		emote("me", EMOTE_VISIBLE, "[pick(emote_taunt)] at [target].")
+		INVOKE_ASYNC(src, PROC_REF(emote), "me", EMOTE_VISIBLE, "[pick(emote_taunt)] at [target].")
 		taunt_chance = max(taunt_chance-7,2)
 	if(LAZYLEN(emote_taunt_sound))
 		var/taunt_choice = pick(emote_taunt_sound)
@@ -444,15 +444,22 @@
 
 
 	if(rapid > 1)
-		var/datum/callback/cb = CALLBACK(src, .proc/Shoot, A)
+		var/datum/callback/cb = CALLBACK(src, PROC_REF(Shoot), A)
 		for(var/i in 1 to rapid)
 			addtimer(cb, (i - 1)*rapid_fire_delay)
 	else
 		Shoot(A)
 		for(var/i in 1 to extra_projectiles)
-			addtimer(CALLBACK(src, .proc/Shoot, A), i * 2)
+			addtimer(CALLBACK(src, PROC_REF(Shoot), A), i * auto_fire_delay)
 	ranged_cooldown = world.time + ranged_cooldown_time
-
+	if(sound_after_shooting)
+		addtimer(CALLBACK(GLOBAL_PROC,GLOBAL_PROC_REF(playsound), src, sound_after_shooting, 100, 0, 0), sound_after_shooting_delay, TIMER_STOPPABLE)
+	if(projectiletype)
+		if(LAZYLEN(variation_list[MOB_PROJECTILE]) >= 2) // Gotta have multiple different projectiles to cycle through
+			projectiletype = vary_from_list(variation_list[MOB_PROJECTILE], TRUE)
+	if(casingtype)
+		if(LAZYLEN(variation_list[MOB_CASING]) >= 2) // Gotta have multiple different casings to cycle through
+			casingtype = vary_from_list(variation_list[MOB_CASING], TRUE)
 
 /mob/living/simple_animal/hostile/proc/Shoot(atom/targeted_atom)
 	if( QDELETED(targeted_atom) || targeted_atom == targets_from.loc || targeted_atom == targets_from )
@@ -576,7 +583,7 @@
 /mob/living/simple_animal/hostile/proc/GainPatience()
 	if(lose_patience_timeout)
 		LosePatience()
-		lose_patience_timer_id = addtimer(CALLBACK(src, .proc/LoseTarget), lose_patience_timeout, TIMER_STOPPABLE)
+		lose_patience_timer_id = addtimer(CALLBACK(src, PROC_REF(LoseTarget)), lose_patience_timeout, TIMER_STOPPABLE)
 
 
 /mob/living/simple_animal/hostile/proc/LosePatience()
@@ -587,7 +594,7 @@
 /mob/living/simple_animal/hostile/proc/LoseSearchObjects()
 	search_objects = 0
 	deltimer(search_objects_timer_id)
-	search_objects_timer_id = addtimer(CALLBACK(src, .proc/RegainSearchObjects), search_objects_regain_time, TIMER_STOPPABLE)
+	search_objects_timer_id = addtimer(CALLBACK(src, PROC_REF(RegainSearchObjects)), search_objects_regain_time, TIMER_STOPPABLE)
 
 
 /mob/living/simple_animal/hostile/proc/RegainSearchObjects(value)

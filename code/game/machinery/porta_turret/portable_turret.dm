@@ -116,7 +116,7 @@
 		base.layer = NOT_HIGH_OBJ_LAYER
 		underlays += base
 	if(!has_cover)
-		INVOKE_ASYNC(src, .proc/popUp)
+		INVOKE_ASYNC(src, PROC_REF(popUp))
 
 /obj/machinery/porta_turret/proc/toggle_on(set_to)
 	var/current = on
@@ -348,7 +348,7 @@
 	toggle_on(FALSE) //turns off the turret temporarily
 	update_icon()
 	//6 seconds for the traitor to gtfo of the area before the turret decides to ruin his shit
-	addtimer(CALLBACK(src, .proc/toggle_on, TRUE), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(toggle_on), TRUE), 6 SECONDS)
 	//turns it back on. The cover popUp() popDown() are automatically called in process(), no need to define it here
 
 /obj/machinery/porta_turret/emp_act(severity)
@@ -368,7 +368,7 @@
 		toggle_on(FALSE)
 		remove_control()
 
-		addtimer(CALLBACK(src, .proc/toggle_on, TRUE), rand(60,600))
+		addtimer(CALLBACK(src, PROC_REF(toggle_on), TRUE), rand(60,600))
 
 /obj/machinery/porta_turret/take_damage(damage, damage_type = BRUTE, damage_flag = 0, sound_effect = 1)
 	. = ..()
@@ -697,7 +697,7 @@
 		remove_control()
 		return FALSE
 	log_combat(caller,A,"fired with manual turret control at")
-	target(A)
+	INVOKE_ASYNC(src, PROC_REF(open_fire_on_target), A)
 	return TRUE
 
 /obj/machinery/porta_turret/syndicate
@@ -1176,8 +1176,8 @@
 		if(team_color == "blue")
 			if(istype(P, /obj/item/projectile/beam/lasertag/redtag))
 				toggle_on(FALSE)
-				addtimer(CALLBACK(src, .proc/toggle_on, TRUE), 10 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(toggle_on), TRUE), 10 SECONDS)
 		else if(team_color == "red")
 			if(istype(P, /obj/item/projectile/beam/lasertag/bluetag))
 				toggle_on(FALSE)
-				addtimer(CALLBACK(src, .proc/toggle_on, TRUE), 10 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(toggle_on, TRUE)), 10 SECONDS)

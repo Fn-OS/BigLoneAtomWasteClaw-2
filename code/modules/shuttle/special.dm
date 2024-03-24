@@ -94,7 +94,7 @@
 		L.visible_message("<span class='revennotice'>A strange purple glow wraps itself around [L] as [L.p_they()] suddenly fall[L.p_s()] unconscious.</span>",
 			"<span class='revendanger'>[desc]</span>")
 		// Don't let them sit suround unconscious forever
-		addtimer(CALLBACK(src, .proc/sleeper_dreams, L), 100)
+		addtimer(CALLBACK(src, PROC_REF(sleeper_dreams), L), 100)
 
 	// Existing sleepers
 	for(var/i in found)
@@ -181,7 +181,17 @@
 	max_integrity = 1000
 	var/boot_dir = 1
 
-/obj/structure/table/wood/bar/Crossed(atom/movable/AM)
+/obj/structure/table/wood/bar/Initialize()
+	. = ..()
+	
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+
+/obj/structure/table/wood/bar/proc/on_entered(atom/movable/AM)
+	SIGNAL_HANDLER
 	if(isliving(AM) && !is_barstaff(AM))
 		// No climbing on the bar please
 		var/mob/living/M = AM

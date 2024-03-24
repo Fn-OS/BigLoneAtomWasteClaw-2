@@ -16,14 +16,13 @@
 	var/ui_x = 310
 	var/ui_y = 320
 
-/obj/item/transfer_valve/Destroy()
-	tank_one = null
-	tank_two = null
-	if(attached_device)
-		attached_device.on_detach()
-		attached_device = null
-	attacher = null
-	return ..()
+/obj/item/transfer_valve/Initialize()
+	. = ..()
+	
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/item/transfer_valve/IsAssemblyHolder()
 	return TRUE
@@ -86,7 +85,7 @@
 /obj/item/transfer_valve/Crossed(atom/movable/AM as mob|obj)
 	. = ..()
 	if(attached_device)
-		attached_device.Crossed(AM)
+		INVOKE_ASYNC(attached_device, PROC_REF(on_entered), AM)
 
 /obj/item/transfer_valve/on_attack_hand()//Triggers mousetraps
 	. = ..()
@@ -144,7 +143,7 @@
 	if(toggle)
 		toggle = FALSE
 		toggle_valve()
-		addtimer(CALLBACK(src, .proc/toggle_off), 5)	//To stop a signal being spammed from a proxy sensor constantly going off or whatever
+		addtimer(CALLBACK(src, PROC_REF(toggle_off)), 5)	//To stop a signal being spammed from a proxy sensor constantly going off or whatever
 
 /obj/item/transfer_valve/proc/toggle_off()
 	toggle = TRUE
