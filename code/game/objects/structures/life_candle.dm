@@ -35,6 +35,7 @@
 		linked_minds |= user.mind
 
 	update_icon()
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable,float), linked_minds.len)
 	if(linked_minds.len)
 		float(TRUE)
 		START_PROCESSING(SSobj, src)
