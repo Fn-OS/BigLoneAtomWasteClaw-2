@@ -13,7 +13,7 @@
 	spawn_positions = 1
 	supervisors = "free hand of the market"
 	description = "You are the ruler of Kebab, you also happen to own the largest gun distributor in the entirety of Yuma. You'll need to manage the town, maintain and increase your income stream, and handle diplomatic matters."
-	exp_requirements = 100
+	exp_requirements = 0
 
 	outfit = /datum/outfit/job/kebab/f13shopkeeper
 	access = list(ACCESS_BAR, ACCESS_CARGO_BOT, ACCESS_MINING, ACCESS_GATEWAY)
@@ -197,7 +197,7 @@
 	spawn_positions = 1
 	supervisors = "No one, but works with and under the Merchant, Militia Commander and High Priest."
 	description = "The High Constable is the man or woman that serves as link and bridge to all faction in Kebab. They are in fact a 4th leader making sure that all factions works together in that chaotic harmony, and must remain impartial. They also have the power to judge and procescute criminals, and grant citizenship. They have a control over the militia (but orders from the Militia Commander takes priority)."
-	exp_requirements = 0
+	exp_requirements = 100
 
 	loadout_options = list(
 		/datum/outfit/loadout/diplomat,
