@@ -94,9 +94,9 @@
 	minimal_access = list(ACCESS_DEN)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/rival = list(
-			/datum/job/kebab/f13highconstable,
-			/datum/job/kebab/f13militian,
-			/datum/job/kebab/f13militiacom,
+			/datum/job/oasis/f13sheriff,
+			/datum/job/oasis/f13mayor,
+			/datum/job/oasis/f13deputy,
 		),
 		/datum/matchmaking_pref/patron = list(
 			/datum/job/wasteland/f13wastelander,

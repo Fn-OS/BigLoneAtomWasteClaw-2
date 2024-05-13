@@ -95,16 +95,14 @@
 	var/list/command = list()
 	var/list/bos = list()
 	var/list/enclave = list()
-	var/list/kebab = list()
+	var/list/oasis = list()
 	var/list/leg = list()
 	var/list/ncr = list()
 	var/list/vault = list()
 	var/list/flw = list()
 	var/list/tribe = list()
 	var/list/was = list()
-	var/list/church = list()
 	var/list/merchant = list()
-	var/list/rustwalker = list()
 	var/list/misc = list()
 	var/dat = {"
 	<head><style>
@@ -136,11 +134,8 @@
 		if(rank in GLOB.enclave_positions)
 			enclave[name] = rank
 			department = 1
-		if(rank in GLOB.kebab_positions)
-			kebab[name] = rank
-			department = 1
-		if(rank in GLOB.church_positions)
-			church[name] = rank
+		if(rank in GLOB.oasis_positions)
+			oasis[name] = rank
 			department = 1
 		if(rank in GLOB.legion_positions)
 			leg[name] = rank
@@ -174,10 +169,10 @@
 		for(var/name in enclave)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[enclave[name]]</td></tr>"
 			even = !even
-	if(length(kebab))
-		dat += "<tr><th colspan=3>Kebab</th></tr>"
-		for(var/name in kebab)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[kebab[name]]</td></tr>"
+	if(length(oasis))
+		dat += "<tr><th colspan=3>Oasis</th></tr>"
+		for(var/name in oasis)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[oasis[name]]</td></tr>"
 			even = !even
 	if(length(leg))
 		dat += "<tr><th colspan=3>Caesar's Legion</th></tr>"
@@ -213,16 +208,6 @@
 		dat += "<tr><th colspan=3>Merchant</th></tr>"
 		for(var/name in merchant)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[merchant[name]]</td></tr>"
-			even = !even
-	if(length(church))
-		dat += "<tr><th colspan=3>Church</th></tr>"
-		for(var/name in church)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[church[name]]</td></tr>"
-			even = !even
-	if(length(rustwalker))
-		dat += "<tr><th colspan=3>Rustwalker</th></tr>"
-		for(var/name in church)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[rustwalker[name]]</td></tr>"
 			even = !even
 	// misc guys
 	if(length(misc))

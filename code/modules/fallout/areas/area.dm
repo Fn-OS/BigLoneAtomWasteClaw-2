@@ -578,8 +578,8 @@
 	environment = 5
 	grow_chance = 5
 
-/area/f13/kebab
-	name = "Kebab"
+/area/f13/oasis
+	name = "Oasis"
 	icon_state = "village"
 	ambientsounds = list('sound/f13ambience/ambigen_10.ogg','sound/f13ambience/ambigen_11.ogg','sound/f13ambience/ambigen_12.ogg', \
 	'sound/f13ambience/ambigen_13.ogg','sound/ambience/signal.ogg')
