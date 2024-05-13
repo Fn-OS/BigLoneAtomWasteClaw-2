@@ -693,7 +693,7 @@
 "acJ" = (
 /obj/machinery/light/floor,
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "acL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/floor{
@@ -2486,7 +2486,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "ajr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/fo13colored/Red{
@@ -3420,7 +3420,7 @@
 	id = "Enclavehangar"
 	},
 /turf/open/floor/plasteel/f13/vault_floor/floor/floorsolid,
-/area/f13/caves)
+/area/f13/enclave)
 "amV" = (
 /turf/open/floor/wood/f13/oakbroken,
 /area/f13/wasteland)
@@ -5340,7 +5340,7 @@
 	id = "Enclavehangar"
 	},
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/wasteland)
+/area/f13/enclave)
 "aub" = (
 /turf/open/floor/carpet/red,
 /area/f13/ncr)
@@ -5360,7 +5360,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/f13/vault_floor/floor/floorsolid,
-/area/f13/caves)
+/area/f13/enclave)
 "aug" = (
 /obj/structure/nest/ghoul{
 	max_mobs = 2
@@ -8015,7 +8015,7 @@
 "aEK" = (
 /obj/effect/turf_decal/delivery/white,
 /turf/open/floor/plasteel/f13/vault_floor/plating,
-/area/f13/caves)
+/area/f13/enclave)
 "aEL" = (
 /obj/structure/window/fulltile/house{
 	icon_state = "housewindowvertical"
@@ -8565,7 +8565,7 @@
 /turf/open/floor/plasteel/f13/vault_floor/misc/vaultrust{
 	icon_state = "stagestairs"
 	},
-/area/f13/caves)
+/area/f13/enclave)
 "aGR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/gibs/down{
@@ -11160,7 +11160,7 @@
 /area/f13/building)
 "aQB" = (
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "aQC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/f13/vault_floor/floor/floorsolid,
@@ -12540,7 +12540,7 @@
 /area/f13/clinic)
 "aVn" = (
 /turf/open/floor/plasteel/f13/vault_floor/floor/floorsolid,
-/area/f13/caves)
+/area/f13/enclave)
 "aVr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/sofa/corp/left{
@@ -13162,11 +13162,11 @@
 /area/f13/building)
 "aXS" = (
 /obj/structure/ladder/unbreakable{
-	height = 3;
+	height = 2;
 	id = "enclave_helipad"
 	},
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "aXV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/indestructible/ground/outside/woodalt,
@@ -13947,7 +13947,7 @@
 /obj/mecha/combat/phazon/vertibird/enclave/loaded,
 /obj/effect/turf_decal/delivery/white,
 /turf/open/floor/plasteel/f13/vault_floor/plating,
-/area/f13/caves)
+/area/f13/enclave)
 "ckh" = (
 /obj/machinery/light/small,
 /turf/open/floor/plasteel/f13/vault_floor/misc/vaultrust,
@@ -13975,7 +13975,7 @@
 	pixel_y = 11
 	},
 /turf/open/floor/plasteel/f13/vault_floor/floor/floorsolid,
-/area/f13/caves)
+/area/f13/enclave)
 "cCT" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
@@ -14115,7 +14115,7 @@
 	id = "Enclavehangar"
 	},
 /turf/open/floor/plasteel/f13/vault_floor/floor/floorsolid,
-/area/f13/wasteland)
+/area/f13/enclave)
 "edX" = (
 /obj/structure/table/booth,
 /obj/item/storage/fancy/cigarettes/cigpack_robustgold,
@@ -14469,7 +14469,7 @@
 "gHO" = (
 /obj/effect/turf_decal,
 /turf/open/floor/plasteel/f13/vault_floor/floor/floorsolid,
-/area/f13/caves)
+/area/f13/enclave)
 "gLZ" = (
 /obj/structure/railing{
 	color = "#A47449";
@@ -14915,7 +14915,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "jvK" = (
 /obj/structure/table/booth,
 /obj/machinery/light/small{
@@ -14949,7 +14949,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "jID" = (
 /obj/structure/junk/small/tv{
 	desc = "Advertisements would've played on this tv before the bombs dropped.";
@@ -15145,7 +15145,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "lCg" = (
 /obj/structure/sign/poster/prewar/poster81,
 /turf/closed/wall/f13/wood,
@@ -15155,13 +15155,6 @@
 	icon_state = "whitegreenrustychess"
 	},
 /area/f13/store)
-"lHH" = (
-/obj/effect/turf_decal/arrows/white,
-/obj/machinery/door/poddoor/shutters/old{
-	id = "Enclavehangar"
-	},
-/turf/open/floor/plasteel/f13/vault_floor/plating,
-/area/f13/wasteland)
 "lTS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/wood/settler,
@@ -15449,7 +15442,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/f13/vault_floor/floor/floorsolid,
-/area/f13/caves)
+/area/f13/enclave)
 "nUN" = (
 /turf/open/floor/wood/wood_tiled,
 /area/f13/building)
@@ -15531,7 +15524,7 @@
 	id = "Enclavehangar"
 	},
 /turf/open/floor/plasteel/f13/vault_floor/plating,
-/area/f13/caves)
+/area/f13/enclave)
 "oXW" = (
 /turf/open/floor/plating/wooden,
 /area/f13/wasteland)
@@ -15561,7 +15554,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "poQ" = (
 /obj/structure/fireplace,
 /turf/open/floor/carpet/black,
@@ -16030,7 +16023,7 @@
 "sKl" = (
 /obj/machinery/light/floor,
 /turf/open/floor/plasteel/f13/vault_floor/floor/floorsolid,
-/area/f13/caves)
+/area/f13/enclave)
 "sNe" = (
 /obj/machinery/door/unpowered/secure_NCR{
 	name = "NCR 2nd Trooper Quarters"
@@ -16107,7 +16100,7 @@
 "tBV" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "tJH" = (
 /obj/effect/decal/cleanable/dirt{
 	color = "000000"
@@ -16179,7 +16172,7 @@
 "uvJ" = (
 /obj/effect/turf_decal/arrows/white,
 /turf/open/floor/plasteel/f13/vault_floor/plating,
-/area/f13/caves)
+/area/f13/enclave)
 "uyL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/urinal{
@@ -16244,7 +16237,7 @@
 	id = "Enclavehangar"
 	},
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "veZ" = (
 /obj/effect/decal/cleanable/oil/slippery,
 /obj/effect/decal/cleanable/dirt{
@@ -16427,7 +16420,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "wIR" = (
 /obj/structure/chair/sofa/corp/left{
 	dir = 8
@@ -16458,7 +16451,7 @@
 /obj/item/stock_parts/cell,
 /obj/item/stock_parts/cell,
 /turf/open/floor/plasteel/f13/vault_floor,
-/area/f13/caves)
+/area/f13/enclave)
 "wZH" = (
 /obj/machinery/light/small,
 /turf/open/floor/wood/f13/maple,
@@ -16489,7 +16482,7 @@
 	on = 1
 	},
 /turf/open/floor/plasteel/f13/vault_floor/plating,
-/area/f13/caves)
+/area/f13/enclave)
 "xiK" = (
 /obj/structure/sign/poster/official/fruit_bowl,
 /turf/closed/wall/f13/wood,
@@ -23181,7 +23174,7 @@ aEK
 chH
 aEK
 uvJ
-lHH
+oSj
 aKg
 aKg
 aKg
@@ -23694,8 +23687,8 @@ aAl
 aAl
 aAl
 aAl
-ayc
-ayc
+akC
+akC
 aPL
 aPL
 aPL
@@ -23951,7 +23944,7 @@ akC
 akC
 akC
 akC
-ayc
+akC
 aPL
 aPL
 aPL
