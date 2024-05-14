@@ -1,13 +1,4 @@
 /*
-Town access doors
-Oasis government: 130  ACCESS_COMMAND
-Sheriff/Deputy, Gatehouse etc: 62 ACCESS_GATEWAY
-General access: 25 ACCESS_BAR
-Clinic: 133 ACCESS_CLINIC
-Church: 22 ACCESS_CHAPEL_OFFICE
-Shopkeeper: 34 ACCESS_CARGO_BOT
-Barkeep : 28 ACCESS_KITCHEN - you jebronis made default bar for no reason bruh
-Prospector : 48 ACCESS_MINING
 here's a tip, go search DEFINES/access.dm
 */
 
@@ -32,8 +23,8 @@ Mayor
 	exp_requirements = 1500
 
 	outfit = /datum/outfit/job/den/f13mayor
-	access = list(ACCESS_BAR, ACCESS_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_CLINIC, ACCESS_KITCHEN, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
-	minimal_access = list(ACCESS_BAR, ACCESS_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_KITCHEN, ACCESS_CLINIC, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
+	access = list(ACCESS_TOWN_BAR, ACCESS_TOWN_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_TOWN_DOC, ACCESS_TOWN, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_TOWN_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_TOWN, ACCESS_TOWN_DOC, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
 			/datum/job/oasis,
@@ -143,8 +134,8 @@ Mayor
 	/datum/outfit/loadout/pw,
 	)
 
-	access = list(ACCESS_BAR, ACCESS_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_CLINIC, ACCESS_KITCHEN, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
-	minimal_access = list(ACCESS_BAR, ACCESS_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_KITCHEN, ACCESS_CLINIC, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
+	access = list(ACCESS_TOWN_BAR, ACCESS_TOWN_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_TOWN_DOC, ACCESS_TOWN, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_TOWN_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_TOWN, ACCESS_TOWN_DOC, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
 			/datum/job/oasis,
@@ -227,8 +218,8 @@ Mayor
 	outfit = /datum/outfit/job/den/f13sheriff
 
 
-	access = list(ACCESS_BAR, ACCESS_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_KITCHEN, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
-	minimal_access = list(ACCESS_BAR, ACCESS_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_CLINIC, ACCESS_KITCHEN, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS)
+	access = list(ACCESS_TOWN_BAR, ACCESS_TOWN_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_TOWN, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS, ACCESS_TOWN_HOS)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_TOWN_COMMAND, ACCESS_CLONING, ACCESS_GATEWAY, ACCESS_CARGO_BOT, ACCESS_MINT_VAULT, ACCESS_TOWN_DOC, ACCESS_TOWN, ACCESS_MINING, ACCESS_FORENSICS_LOCKERS, ACCESS_TOWN_HOS)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
 			/datum/job/oasis,
@@ -297,8 +288,8 @@ Mayor
 	/datum/outfit/loadout/swat,)
 
 	outfit = /datum/outfit/job/oasis/f13deputy
-	access = list(ACCESS_BAR, ACCESS_GATEWAY)
-	minimal_access = list(ACCESS_BAR, ACCESS_GATEWAY)
+	access = list(ACCESS_TOWN_BAR, ACCESS_GATEWAY, ACCESS_TOWN_SEC)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_GATEWAY, ACCESS_TOWN_SEC)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
 			/datum/job/oasis,
@@ -381,8 +372,8 @@ Mayor
 
 	outfit = /datum/outfit/job/den/f13farmer
 
-	access = list(ACCESS_BAR,  ACCESS_KITCHEN)
-	minimal_access = list(ACCESS_BAR,  ACCESS_KITCHEN)
+	access = list(ACCESS_TOWN_BAR,  ACCESS_TOWN)
+	minimal_access = list(ACCESS_TOWN_BAR,  ACCESS_TOWN)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
 			/datum/job/oasis,
@@ -434,8 +425,8 @@ Mayor
 
 	outfit = /datum/outfit/job/den/f13prospector
 
-	access = list(ACCESS_BAR, ACCESS_MINING)
-	minimal_access = list(ACCESS_BAR, ACCESS_MINING)
+	access = list(ACCESS_TOWN_BAR, ACCESS_MINING)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_MINING)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
 			/datum/job/oasis,
@@ -500,8 +491,8 @@ Mayor
 		/datum/outfit/loadout/apothecary,
 		/datum/outfit/loadout/nurse,
 		/datum/outfit/loadout/churchie)
-	access = list(ACCESS_BAR, ACCESS_CLINIC)
-	minimal_access = list(ACCESS_BAR, ACCESS_CLINIC)
+	access = list(ACCESS_TOWN_BAR, ACCESS_TOWN_DOC)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_TOWN_DOC)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(/datum/job/wasteland/f13wastelander, /datum/job/oasis),
 		/datum/matchmaking_pref/rival = list(/datum/job/wasteland/f13wastelander, /datum/job/oasis),
@@ -609,8 +600,8 @@ Mayor
 	/datum/outfit/loadout/cleanser		//Just some bombs.
 	)
 
-	access = list(ACCESS_BAR, ACCESS_CHAPEL_OFFICE)
-	minimal_access = list(ACCESS_BAR, ACCESS_CHAPEL_OFFICE)
+	access = list(ACCESS_TOWN_BAR, ACCESS_COTC)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_COTC)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(/datum/job/wasteland/f13wastelander, /datum/job/oasis),
 		/datum/matchmaking_pref/rival = list(/datum/job/wasteland/f13wastelander, /datum/job/oasis),
@@ -779,8 +770,8 @@ Mayor
 	/datum/outfit/loadout/richmantender,
 	/datum/outfit/loadout/diner)
 
-	access = list(ACCESS_BAR, ACCESS_KITCHEN)
-	minimal_access = list(ACCESS_BAR, ACCESS_KITCHEN)
+	access = list(ACCESS_TOWN_BAR, ACCESS_TOWN)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_TOWN)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
 			/datum/job/oasis,
@@ -866,8 +857,8 @@ Mayor
 		/datum/outfit/loadout/militia,
 		/datum/outfit/loadout/singer,
 	)
-	access = list(ACCESS_BAR)
-	minimal_access = list(ACCESS_BAR)
+	access = list(ACCESS_TOWN_BAR)
+	minimal_access = list(ACCESS_TOWN_BAR)
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
 			/datum/job/oasis,
@@ -977,8 +968,8 @@ Mayor
 	exp_requirements = 0
 	outfit = /datum/outfit/job/oasis/f13assist
 
-	access = list(ACCESS_BAR, ACCESS_CARGO_BOT)
-	minimal_access = list(ACCESS_BAR, ACCESS_CARGO_BOT)
+	access = list(ACCESS_TOWN_BAR, ACCESS_CARGO_BOT)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_CARGO_BOT)
 
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
@@ -1042,8 +1033,8 @@ Mayor
 	exp_requirements = 0
 
 	outfit = /datum/outfit/job/den/f13shopkeeper
-	access = list(ACCESS_BAR, ACCESS_CARGO_BOT)
-	minimal_access = list(ACCESS_BAR, ACCESS_CARGO_BOT)
+	access = list(ACCESS_TOWN_BAR, ACCESS_CARGO_BOT)
+	minimal_access = list(ACCESS_TOWN_BAR, ACCESS_CARGO_BOT)
 
 	matchmaking_allowed = list(
 		/datum/matchmaking_pref/friend = list(
