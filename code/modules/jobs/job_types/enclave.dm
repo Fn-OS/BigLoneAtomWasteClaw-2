@@ -154,7 +154,7 @@
 	description = "As a Pilot in the Enclave, your primary duty is the operation of vertibirds. You will answer only to Officers of the United States."
 	supervisors = "The Captain."
 	outfit = /datum/outfit/job/enclave/enclavepilot
-	exp_requirements = 600
+	exp_requirements = 0
 
 /datum/outfit/job/enclave/enclavepilot
 	name = "Enclave Pilot"
@@ -256,7 +256,7 @@
 	description = "You are a specialist trained in the use of heavy equipment and X0-2 Power armor. Your job is to be he anchor of your unit."
 	supervisors = "The Captain, Lieutenant and the Sergeants"
 	outfit = /datum/outfit/job/enclave/peacekeeper/Armoredinfantry
-	exp_requirements = 600
+	exp_requirements = 0
 
 	loadout_options = list(
 	/datum/outfit/loadout/troopy,
@@ -305,7 +305,7 @@
 	description = "Entrusted with the command of the squads assigned to the local Enclave forces, your job is to assist the Lieutenant alongside the scientists."
 	supervisors = "The Captain, the Lieutenant and the Gunnery Sergeant."
 	outfit = /datum/outfit/job/enclave/peacekeeper/enclavesgt
-	exp_requirements = 600
+	exp_requirements = 0
 
 /datum/outfit/job/enclave/peacekeeper/enclavesgt
 	name = "Enclave Sergeant"
@@ -342,7 +342,7 @@
 	description = "You are an operative for the remnants of the Enclave. You, unlike the normal privates, have recieved specialist training in either engineering or medicine."
 	supervisors = "The Captain, Lieutenant and the Sergeants."
 	outfit = /datum/outfit/job/enclave/peacekeeper/f13specialist
-	exp_requirements = 300
+	exp_requirements = 0
 
 	loadout_options = list(
 		/datum/outfit/loadout/specmedic,
@@ -565,7 +565,7 @@
 	description = "You're responsible for the maintenance of the bunker, the knowledge you've accumulated over the years is the only thing keeping the remnants alive. You've dabbled in enough to be considered a Professor in your field of research, but they call you Doctor. Support your dwindling forces and listen to the Lieutenant."
 	supervisors = "Enclave Research and Development Division."
 	outfit = /datum/outfit/job/enclave/noncombat/enclavesci
-	exp_requirements = 300
+	exp_requirements = 0
 
 /datum/outfit/job/enclave/noncombat/enclavesci
 	name = "Enclave Scientist"
@@ -617,7 +617,7 @@
 	supervisors = "Everyone else."
 	outfit = /datum/outfit/job/enclave/noncombat/f13BDUTY
 	exp_type = EXP_TYPE_FALLOUT
-	exp_requirements = 100
+	exp_requirements = 0
 
 	loadout_options = list(
 		/datum/outfit/loadout/bunkerduty_botany,

@@ -311,7 +311,7 @@ Weapons		Service Rifle, Grease Gun, 9mm pistol, all good.
 	spawn_positions = 1
 	description = "You are third in command of the NCR forces in the region, the 3rd Motorized division. You follow the orders of your superior officers, personally commanding the troopers. You make sure that squads are formed, and maintain some level of organisation."
 	supervisors = "The Command Board, the Lieutnant, The Captain."
-	exp_requirements = 400
+	exp_requirements = 0
 
 	outfit = /datum/outfit/job/ncr/f13staffsergeant
 
@@ -472,7 +472,7 @@ Weapons		Service Rifle, Grease Gun, 9mm pistol, all good.
 	spawn_positions = 1
 	description = "You are an influential representative for the NCR and experienced bureaucrat. You are here to further the objectives and interests of the NCR."
 	supervisors = "Only god."
-	exp_requirements = 300
+	exp_requirements = 0
 
 	outfit = /datum/outfit/job/ncr/f13representative
 
@@ -637,7 +637,7 @@ Weapons		Service Rifle, Grease Gun, 9mm pistol, all good.
 	spawn_positions = 3
 	description = "As an NCR Ranger, you are the premier special forces unit of the NCR. You are the forward observations and support the Army in it's campaigns, as well as continuing the tradition of stopping slavery in it's tracks."
 	supervisors = "the Veteran Ranger"
-	exp_requirements = 150
+	exp_requirements = 0
 
 	outfit = /datum/outfit/job/ncr/f13ranger
 
@@ -881,7 +881,7 @@ Weapons		Service Rifle, Grease Gun, 9mm pistol, all good.
 	spawn_positions = 2
 	description = "Here to conduct any kind of investigation, or serve as bodyguards for a rep. They only take orders from the Captain, Lieutenant and Rep. They also need Arrest Warrants from the Command Board (via a Ahelp), unless they witness a war crime or dangerous behavior."
 	supervisors = "NCRA Officers"
-	exp_requirements = 300
+	exp_requirements = 0
 
 	outfit = /datum/outfit/job/ncr/f13mp
 
@@ -1134,7 +1134,7 @@ Weapons		Service Rifle, Grease Gun, 9mm pistol, all good.
 	spawn_positions = 1
 	description = "You are the effective leadership of the medical division of the NCR forces in the region. Your job is to get the medical side moving, check the physical and mental health of the troops, and of course, to act as a doctor."
 	supervisors = "Lieutenant and Above"
-	exp_requirements = 300
+	exp_requirements = 0
 
 	outfit = /datum/outfit/job/ncr/f13medicalofficer
 
