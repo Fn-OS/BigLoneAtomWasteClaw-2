@@ -15,7 +15,7 @@
 	description = "The mob rules in Yuma. A hitman for the Den's Boss, you are a highly loyal enforcer charged with keeping order among the outlaw groups inhabiting the Den."
 	supervisors = "The Boss."
 	selection_color = "#ff4747"
-	exp_requirements = 600
+	exp_requirements = 0
 	exp_type = EXP_TYPE_WASTELAND
 
 	outfit = /datum/outfit/job/wasteland/f13enforcer
@@ -158,7 +158,7 @@
 	description = "While you prioritize providing medical treatment in emergency situations, you are still trained in combat and have the additional role as a loyal combanteer to the Den."
 	supervisors = "The Boss."
 	selection_color = "#ff4747"
-	exp_requirements = 1000
+	exp_requirements = 0
 	exp_type = EXP_TYPE_OUTLAW
 
 	outfit = /datum/outfit/job/wasteland/f13dendoctor
