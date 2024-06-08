@@ -3106,16 +3106,6 @@
 	color = "#e4e4e4"
 	},
 /area/f13/legion)
-"blk" = (
-/obj/structure/ladder/unbreakable{
-	height = 2;
-	id = "town_east";
-	name = "east ladder"
-	},
-/turf/open/indestructible/ground/outside/sidewalk{
-	icon_state = "horizontaloutermain1"
-	},
-/area/f13/city)
 "blp" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lantern{
@@ -27583,13 +27573,6 @@
 	icon_state = "yellowrustyfull"
 	},
 /area/f13/building)
-"llq" = (
-/obj/structure/ladder/unbreakable{
-	height = 2;
-	id = "gatehouseladder"
-	},
-/turf/open/floor/plasteel/f13/vault_floor/misc/vaultrust,
-/area/f13/city)
 "lly" = (
 /obj/structure/chair/wood{
 	dir = 1
@@ -29199,9 +29182,6 @@
 	},
 /turf/open/floor/plasteel/f13/vault_floor/dark,
 /area/f13/brotherhood/surface)
-"lVg" = (
-/turf/open/transparent/openspace,
-/area/f13/bunker)
 "lVp" = (
 /obj/structure/sacrificealtar{
 	density = 1;
@@ -32131,16 +32111,6 @@
 	icon_state = "verticalinnermain1"
 	},
 /area/f13/wasteland)
-"nbE" = (
-/turf/closed/indestructible/rock{
-	desc = "A pre-War wall made of solid concrete.";
-	icon = 'icons/turf/walls/f13store.dmi';
-	icon_state = "store";
-	icon_type_smooth = "store";
-	name = "Concrete wall";
-	smooth = 1
-	},
-/area/f13/caves)
 "nbJ" = (
 /obj/structure/sign/poster/prewar/poster61{
 	pixel_y = 32
@@ -37300,13 +37270,6 @@
 	icon_state = "floorrusty"
 	},
 /area/f13/building)
-"pok" = (
-/obj/structure/ladder/unbreakable{
-	height = 2;
-	id = "oasisdb"
-	},
-/turf/open/indestructible/ground/outside/ruins,
-/area/f13/city)
 "pon" = (
 /obj/structure/decoration/vent/rusty,
 /turf/closed/wall/rust,
@@ -38245,16 +38208,6 @@
 	icon_state = "horizontaloutermain1"
 	},
 /area/f13/wasteland)
-"pJn" = (
-/turf/closed/indestructible/rock{
-	desc = "A pre-War wall made of solid concrete.";
-	icon = 'icons/turf/walls/f13store.dmi';
-	icon_state = "store";
-	icon_type_smooth = "store";
-	name = "Concrete wall";
-	smooth = 1
-	},
-/area/f13/bunker)
 "pJr" = (
 /obj/structure/flora/grass/coyote/one,
 /obj/structure/cable/white{
@@ -39107,12 +39060,6 @@
 	icon_state = "dirtcorner"
 	},
 /area/f13/wasteland)
-"pZV" = (
-/obj/structure/stairs/north,
-/turf/open/floor/f13{
-	icon_state = "floordirty"
-	},
-/area/f13/bunker)
 "qaj" = (
 /obj/structure/flora/tree/joshua,
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -49602,11 +49549,6 @@
 /turf/open/indestructible/ground/outside/sidewalk,
 /area/f13/city)
 "uzv" = (
-/obj/structure/ladder/unbreakable{
-	height = 2;
-	id = "town_south";
-	name = "south ladder"
-	},
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -55764,13 +55706,6 @@
 /obj/structure/window/fulltile/ruins,
 /turf/open/floor/plasteel/f13/vault_floor/dark/darksolid,
 /area/f13/ncr)
-"xbW" = (
-/obj/structure/ladder/unbreakable{
-	height = 2;
-	id = "mine"
-	},
-/turf/open/indestructible/ground/inside/mountain,
-/area/f13/tunnel)
 "xbX" = (
 /turf/open/indestructible/ground/outside/road{
 	icon_state = "verticalleftborderright0"
@@ -64325,7 +64260,7 @@ rpu
 rpu
 xjA
 rpu
-nbE
+mTd
 ktB
 ktB
 uqa
@@ -64576,13 +64511,13 @@ dCV
 dCV
 dCV
 ktB
-sGp
-sGp
-sGp
-sGp
+uqa
+uqa
+uqa
+uqa
 rpu
 rpu
-nbE
+mTd
 ktB
 gcK
 eKB
@@ -64833,10 +64768,10 @@ wqF
 wqF
 dCV
 ktB
-pJn
-pZV
-lVg
-pJn
+qbD
+fYT
+fYT
+fYT
 fYT
 fYT
 qbD
@@ -65090,10 +65025,10 @@ lYo
 ekG
 dCV
 ktB
-pJn
-pJn
-pJn
-pJn
+qbD
+fYT
+fYT
+fYT
 fYT
 bOQ
 qbD
@@ -68871,7 +68806,7 @@ mwp
 mwp
 mwp
 mwp
-xbW
+mwp
 gcK
 gcK
 gts
@@ -88161,7 +88096,7 @@ lon
 sRf
 ive
 fJv
-pok
+eap
 ePd
 rtl
 bFJ
@@ -88385,7 +88320,7 @@ pqO
 koD
 kOz
 fXh
-llq
+ioU
 pXv
 ioU
 ioU
@@ -94046,7 +93981,7 @@ fXh
 fXh
 fXh
 fXh
-blk
+exL
 nnG
 lLj
 ive
