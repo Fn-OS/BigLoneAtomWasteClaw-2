@@ -46,23 +46,37 @@
 /datum/chemical_reaction/proc/check_special_react(datum/reagents/holder)
 	return
 
-/datum/chemical_reaction/proc/chemical_mob_spawn(datum/reagents/holder, amount_to_spawn, reaction_name, mob_class = HOSTILE_SPAWN, mob_faction = "chemicalsummon")
-	if(holder && holder.my_atom)
+/datum/chemical_reaction/proc/chemical_mob_spawn(datum/reagents/holder, amount_to_spawn, reaction_name, mob_class = HOSTILE_SPAWN, mob_faction = FACTION_CHEMICAL_SUMMON, random = TRUE)
+	if(holder?.my_atom)
 		var/atom/A = holder.my_atom
 		var/turf/T = get_turf(A)
+		var/message = "Mobs have been spawned in [ADMIN_VERBOSEJMP(T)] by a [reaction_name] reaction."
+		message += " (<A HREF='?_src_=vars;Vars=[REF(A)]'>VV</A>)"
 
+		var/mob/M = get(A, /mob)
+		if(M)
+			message += " - Carried By: [ADMIN_LOOKUPFLW(M)]"
+		else
+			message += " - Last Fingerprint: [(A.fingerprintslast ? A.fingerprintslast : "N/A")]"
 
-		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
+		message_admins(message, 0, 1)
+		log_game("[reaction_name] chemical mob spawn reaction occuring at [AREACOORD(T)] carried by [key_name(M)] with last fingerprint [A.fingerprintslast? A.fingerprintslast : "N/A"]")
+
+		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, TRUE)
 
 		for(var/mob/living/carbon/C in viewers(get_turf(holder.my_atom), null))
 			C.flash_act()
 
 		for(var/i in 1 to amount_to_spawn)
-			var/mob/living/simple_animal/S = create_random_mob(get_turf(holder.my_atom), mob_class)
-			S.faction |= mob_faction
+			var/mob/living/spawned_mob
+			if(random)
+				spawned_mob = create_random_mob(get_turf(holder.my_atom), mob_class)
+			else
+				spawned_mob = new mob_class(get_turf(holder.my_atom))//Spawn our specific mob_class
+			spawned_mob.faction |= mob_faction
 			if(prob(50))
-				for(var/j = 1, j <= rand(1, 3), j++)
-					step(S, pick(NORTH,SOUTH,EAST,WEST))
+				for(var/j in 1 to rand(1, 3))
+					step(spawned_mob, pick(NORTH,SOUTH,EAST,WEST))
 
 /datum/chemical_reaction/proc/goonchem_vortex(turf/T, setting_type, range)
 	for(var/atom/movable/X in orange(range, T))
