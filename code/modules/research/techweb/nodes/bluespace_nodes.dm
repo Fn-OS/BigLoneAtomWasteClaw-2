@@ -32,7 +32,6 @@
 	design_ids = list("bluespace_cell", "quadratic_capacitor")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
-/*8
 /datum/techweb_node/bluespace_holding
 	id = "bluespace_holding"
 	display_name = "Bluespace Pockets"
@@ -64,7 +63,6 @@
 	prereq_ids = list("bluespace_warping", "syndicate_basic")
 	design_ids = list("desynchronizer")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-*/
 
 /////////////////////////shuttle tech/////////////////////////
 

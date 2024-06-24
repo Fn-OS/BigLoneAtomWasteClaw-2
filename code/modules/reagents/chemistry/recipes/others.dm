@@ -196,13 +196,11 @@
 	required_reagents = list(/datum/reagent/ammonia = 2, /datum/reagent/nitrogen = 1, /datum/reagent/oxygen = 2)
 	required_temp = 525
 
-/*
 /datum/chemical_reaction/mulligan
 	name = "Mulligan"
 	id = "mulligan"
 	results = list(/datum/reagent/mulligan = 1)
 	required_reagents = list(/datum/reagent/slime_toxin = 1, /datum/reagent/toxin/mutagen = 1)
-*/
 
 /datum/chemical_reaction/fermis_plush
 	name = "Fermis plush"
@@ -618,7 +616,7 @@
 	id = /datum/reagent/colorful_reagent
 	results = list(/datum/reagent/colorful_reagent = 5)
 	required_reagents = list(/datum/reagent/stable_plasma = 1, /datum/reagent/radium = 1, /datum/reagent/drug/space_drugs = 1, /datum/reagent/medicine/cryoxadone = 1, /datum/reagent/consumable/triple_citrus = 1)
-/*
+
 /datum/chemical_reaction/life
 	name = "Life"
 	id = "life"
@@ -637,7 +635,6 @@
 
 /datum/chemical_reaction/life_friendly/on_reaction(datum/reagents/holder, multiplier)
 	chemical_mob_spawn(holder, rand(1, round(multiplier, 1)), "Life (friendly)", FRIENDLY_SPAWN) //Pray for cute cats
-*/
 
 /datum/chemical_reaction/corgium
 	name = "corgium"

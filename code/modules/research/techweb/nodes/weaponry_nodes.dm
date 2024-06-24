@@ -15,7 +15,7 @@
 	prereq_ids = list("adv_engi", "weaponry")
 	design_ids = list("pin_loyalty", "ecp", "bullet_shield", "rechargerpistol")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
-/*
+
 /datum/techweb_node/electric_weapons
 	id = "electronic_weapons"
 	display_name = "Electric Weapons"
@@ -95,4 +95,4 @@
 	prereq_ids = list("adv_weaponry", "adv_bluespace")
 	design_ids = list("gravitygun", "mech_gravcatapult")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-*/
+

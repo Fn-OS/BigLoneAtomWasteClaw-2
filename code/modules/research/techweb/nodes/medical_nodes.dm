@@ -1,7 +1,6 @@
 
 ////////////////////////Medical////////////////////////
 
-/*
 /datum/techweb_node/cloning
 	id = "cloning"
 	display_name = "Genetic Engineering"
@@ -9,7 +8,6 @@
 	prereq_ids = list("biotech")
 	design_ids = list("clonecontrol", "clonepod", "clonescanner", "scan_console", "cloning_disk")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
-*/
 
 /datum/techweb_node/cryotech
 	id = "cryotech"
@@ -18,7 +16,7 @@
 	prereq_ids = list("adv_engi", "biotech")
 	design_ids = list("splitbeaker", "noreactsyringe", "cryotube")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
-/*
+
 /datum/techweb_node/adv_defibrillator_tec
 	id = "adv_defibrillator_tec"
 	display_name = "Defibrillator Upgrades"
@@ -26,7 +24,6 @@
 	prereq_ids = list("adv_biotech", "exp_surgery", "adv_engi", "adv_power")
 	design_ids = list("defib_decay", "defib_shock", "defib_heal", "defib_speed")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-*/
 
 //////////////////////Cybernetics/////////////////////
 
