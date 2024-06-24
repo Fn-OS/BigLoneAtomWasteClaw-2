@@ -248,7 +248,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(istype(C))
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
-			unlock_content = C.IsByondMember()
+			unlock_content = C.IsByondMember() || C.is_staff()
 			if(unlock_content)
 				max_save_slots = 30
 	var/loaded_preferences_successfully = load_preferences()
@@ -1534,7 +1534,7 @@ Records disabled until a use for them is found
 					SetSpecial(user)
 					return 1
 				if("ghostform")
-					if(unlock_content || usr.client.is_staff())
+					if(unlock_content)
 						var/new_form = input(user, "Thanks for supporting BYOND - Choose your ghostly form:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_forms
 						if(new_form)
 							ghost_form = new_form
@@ -1542,7 +1542,7 @@ Records disabled until a use for them is found
 								var/mob/dead/observer/dude = user
 								dude.Login()
 				if("ghostorbit")
-					if(unlock_content || usr.client.is_staff())
+					if(unlock_content)
 						var/new_orbit = input(user, "Thanks for supporting BYOND - Choose your ghostly orbit:","Thanks for supporting BYOND", null) as null|anything in GLOB.ghost_orbits
 						if(new_orbit)
 							ghost_orbit = new_orbit
