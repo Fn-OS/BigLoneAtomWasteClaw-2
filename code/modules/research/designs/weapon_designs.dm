@@ -5,7 +5,7 @@
 //////////////
 //Ammo Boxes//
 //////////////
-
+/*
 /datum/design/c38/sec
 	id = "sec_38"
 	build_type = PROTOLATHE
@@ -46,7 +46,7 @@
 	build_path = /obj/item/ammo_box/c38/iceblox
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
+*/
 //////////////////
 //Mag-Rifle Mags//
 //////////////////
@@ -98,7 +98,7 @@
 	build_path = /obj/item/ammo_box/magazine/wt550m9
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
+/*
 /datum/design/mag_oldsmg/ap_mag
 	name = "WT-550 Semi-Auto SMG Armour Piercing Magazine (4.6x30mm AP)"
 	desc = "A 32 round armour piercing magazine for the out of date security WT-550 Semi-Auto SMG."
@@ -122,7 +122,7 @@
 	materials = list(/datum/material/iron = 6000, /datum/material/silver = 600, /datum/material/uranium = 2000)
 	build_path = /obj/item/ammo_box/magazine/wt550m9/wttx
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
+*/
 /datum/design/mag_oldsmg/rubber_mag
 	name = "WT-550 Semi-Auto SMG rubberbullets Magazine (4.6x30mm rubber)"
 	desc = "A 32 round rubber shots magazine for the out of date security WT-550 Semi-Auto SMG"
@@ -248,7 +248,7 @@
 //Guns////////
 //////////////
 
-/datum/design/lasercarbine
+/*/datum/design/lasercarbine
 	name = "Laser Carbine"
 	desc = "Beefed up version of a standard laser gun."
 	id = "lasercarbine"
@@ -257,7 +257,7 @@
 	build_path = /obj/item/gun/energy/laser/carbine/nopin
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
+*/
 /datum/design/stunrevolver
 	name = "Tesla Revolver"
 	desc = "A high-tech revolver that fires internal, reusable shock cartridges in a revolving cylinder. The cartridges can be recharged using conventional rechargers."

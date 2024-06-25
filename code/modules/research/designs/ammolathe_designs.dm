@@ -517,13 +517,13 @@
 	materials = list(/datum/material/iron = 15000, /datum/material/blackpowder = 2000)
 	category = list("initial", "Intermediate Ammo")
 
-/datum/design/ammolathe/a45op
+/*/datum/design/ammolathe/a45op
 	name = ".45 ACP +P ammo box"
 	id = "a45op"
 	materials = list(/datum/material/iron = 14000, /datum/material/blackpowder = 2000)
 	build_path = /obj/item/ammo_box/c45/op
 	category = list("initial", "Intermediate Ammo")
-
+*/
 /* --Tier 4 Ammo and Magazines-- */
 //Tier 4 Magazines
 /datum/design/ammolathe/m10mm_p90
