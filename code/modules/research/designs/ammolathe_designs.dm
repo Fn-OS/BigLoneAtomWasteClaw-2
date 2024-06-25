@@ -293,14 +293,13 @@
 	build_path = /obj/item/ammo_box/m5mmbox
 	category = list("initial", "Basic Ammo")
 
-/*
 /datum/design/ammolathe/magnumshot
 	name = "magnum buckshot shotgun box"
 	id = "magnumshot"
 	materials = list(/datum/material/iron = 10000, /datum/material/blackpowder = 1500)
 	build_path = /obj/item/ammo_box/shotgun/magnum
 	category = list("initial", "Basic Ammo")
-*/
+
 /datum/design/ammolathe/slugshot
 	name = "slug shotgun box"
 	id = "slugshot"
@@ -518,12 +517,12 @@
 	materials = list(/datum/material/iron = 15000, /datum/material/blackpowder = 2000)
 	category = list("initial", "Intermediate Ammo")
 
-/*/datum/design/ammolathe/a45op
+/datum/design/ammolathe/a45op
 	name = ".45 ACP +P ammo box"
 	id = "a45op"
 	materials = list(/datum/material/iron = 14000, /datum/material/blackpowder = 2000)
 	build_path = /obj/item/ammo_box/c45/op
-	category = list("initial", "Intermediate Ammo")*/
+	category = list("initial", "Intermediate Ammo")
 
 /* --Tier 4 Ammo and Magazines-- */
 //Tier 4 Magazines
@@ -533,14 +532,14 @@
 	materials = list(/datum/material/iron = 6000)
 	build_path = /obj/item/ammo_box/magazine/m10mm_p90/empty
 	category = list("initial", "Advanced Magazines")
-/* //Disabled, weapon is built around less ammo capacity. There's a reason why m556_rifle_extended is also disabled under the advanced category
+
 /datum/design/ammolathe/smg14stacked
 	name = "empty smg stacked magazine (14mm)"
 	id = "m127ssmg"
 	materials = list(/datum/material/iron = 8000)
 	build_path = /obj/item/ammo_box/magazine/smg14/stacked/empty
 	category = list("initial", "Advanced Magazines")
-*/
+
 /datum/design/ammolathe/rifleassault556
 	name = "empty 30rd rifle magazine (5.56mm)"
 	id = "rifleassault556"
@@ -562,14 +561,13 @@
 	build_path = /obj/item/ammo_box/magazine/cz53/empty
 	category = list("initial", "Advanced Magazines")
 
-/*
 /datum/design/ammolathe/m556_rifle_extended
 	name = "empty extended rifle magazine (5.56mm)"
 	id = "m556_rifle_extended"
 	materials = list(/datum/material/iron = 8000)
 	build_path = /obj/item/ammo_box/magazine/m556/rifle/extended/empty
 	category = list("initial", "Advanced Magazines")
-*/
+
 /datum/design/ammolathe/m473
 	name = "empty g11 magazine (4.73mm)"
 	id = "m473"

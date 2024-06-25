@@ -111,7 +111,7 @@
 	build_path = /obj/item/reagent_containers/syringe/dart/bluespace
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
-/*
+
 /datum/design/smartdartgun
 	name = "dart gun"
 	desc = "A compressed air gun, designed to fit medicinal darts for application of medicine for those patients just out of reach."
@@ -121,7 +121,7 @@
 	build_path = /obj/item/gun/syringe/dart
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
-*/
+
 /datum/design/plasmarefiller
 	name = "Plasma-Man Jumpsuit Refill"
 	desc = "A refill pack for the auto-extinguisher on Plasma-man suits."
@@ -863,14 +863,14 @@
 	id = "surgery_ligament_reinforcement"
 	surgery = /datum/surgery/advanced/bioware/ligament_reinforcement
 	research_icon_state = "surgery_chest"
-/*
+
 /datum/design/surgery/necrotic_revival
 	name = "Necrotic Revival"
 	desc = "An experimental surgical procedure that stimulates the growth of a Romerol tumor inside the patient's brain. Requires rezadone."
 	id = "surgery_zombie"
 	surgery = /datum/surgery/advanced/necrotic_revival
 	research_icon_state = "surgery_head"
-*/
+
 /////////////////////////////////////////
 ////////////Medical Prosthetics//////////
 /////////////////////////////////////////
