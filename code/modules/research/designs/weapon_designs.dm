@@ -130,7 +130,6 @@
 	materials = list(/datum/material/iron = 6000)
 	build_path = /obj/item/ammo_box/magazine/wt550m9/wtrubber
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-*/
 
 //////////////
 //Ammo Shells/
