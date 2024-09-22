@@ -509,7 +509,7 @@ Records disabled until a use for them is found
 				dat += "<b>Sprite Size:</b> <a href='?_src_=prefs;preference=body_size;task=input'>[features["body_size"]*100]%</a><br>"
 
 			if((EYECOLOR in pref_species.species_traits) && !(NOEYES in pref_species.species_traits))
-				if(!use_skintones)
+//				if(!use_skintones && !mutant_colors)
 				dat += APPEARANCE_CATEGORY_COLUMN
 				if(left_eye_color != right_eye_color)
 					split_eye_colors = TRUE
@@ -525,8 +525,6 @@ Records disabled until a use for them is found
 					dat += "<h3>Right Eye Color</h3>"
 					dat += "<span style='border: 1px solid #161616; background-color: #[right_eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eye_right;task=input'>Change</a><BR>"
 					dat += "</td>"
-			else if(use_skintones)
-				dat += "</td>"
 
 			dat += APPEARANCE_CATEGORY_COLUMN
 			dat += "<h2>Speech preferences</h2>"
