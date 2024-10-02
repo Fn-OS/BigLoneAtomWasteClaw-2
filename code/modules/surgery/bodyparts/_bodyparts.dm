@@ -766,11 +766,6 @@
 		else
 			limb.icon_state = "[species_id]_[body_zone]"
 
-		if(istype(src, /obj/item/bodypart/l_leg) || istype(src, /obj/item/bodypart/r_leg))
-			second_limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
-			second_limb.icon = limb.icon
-			. += second_limb
-
 		// Body markings
 		if(length(body_markings_list))
 			if(species_id == "husk")
