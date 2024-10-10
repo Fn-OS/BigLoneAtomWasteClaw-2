@@ -106,6 +106,12 @@
 //belly sound pref things
 #define NORMIE_HEARCHECK 4
 
+//icon states for the default eyes and for a state for no eye
+#define DEFAULT_EYES_TYPE			"normal"
+#define DEFAULT_LEFT_EYE_STATE		"normal_left_eye"
+#define DEFAULT_RIGHT_EYE_STATE		"normal_right_eye"
+#define DEFAULT_NO_EYE_STATE		"no_eye"
+
 //special species definitions
 #define MINIMUM_MUTANT_COLOR	"#202020" //this is how dark players mutant parts and skin can be
 
@@ -118,6 +124,7 @@
 #define MATRIX_GREEN_BLUE	"green_blue"
 #define MATRIX_ALL			"red_green_blue"
 #define MATRIX_NONE			"none"
+
 //defines for the two colour schemes, advanced and old
 #define OLD_CHARACTER_COLORING			"old_color_system"
 #define ADVANCED_CHARACTER_COLORING		"advanced_color_system"
