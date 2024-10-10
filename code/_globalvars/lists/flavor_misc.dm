@@ -17,7 +17,6 @@ GLOBAL_LIST_EMPTY(undershirt_f)	 //stores only undershirt name
 	//Socks
 GLOBAL_LIST_EMPTY_TYPED(socks_list, /datum/sprite_accessory/underwear/socks)		//stores socks indexed by name
 	//Lizard Bits (all datum lists indexed by name)
-GLOBAL_LIST_EMPTY(body_markings_list)
 GLOBAL_LIST_EMPTY(tails_list_lizard)
 GLOBAL_LIST_EMPTY(animated_tails_list_lizard)
 GLOBAL_LIST_EMPTY(snouts_list)
@@ -52,7 +51,6 @@ GLOBAL_LIST_INIT(mutant_reference_list, list(
 	"frills" = GLOB.frills_list,
 	"horns" = GLOB.horns_list,
 	"ears" = GLOB.ears_list,
-	"body_markings" = GLOB.body_markings_list,
 	"wings" = GLOB.wings_list,
 	"wingsopen" = GLOB.wings_open_list,
 	"deco_wings" = GLOB.deco_wings_list,
@@ -80,62 +78,9 @@ GLOBAL_LIST_INIT(mutant_transform_list, list("wingsopen" = "wings",
 	"waggingspines" = "spines",
 	"mam_waggingtail" = "mam_tail"))
 
-GLOBAL_LIST_INIT(ghost_forms_with_directions_list, list(
-	"ghost",
-	"ghostian",
-	"ghostian2",
-	"ghostking",
-	"ghost_red",
-	"ghost_black",
-	"ghost_blue",
-	"ghost_yellow",
-	"ghost_green",
-	"ghost_pink",
-	"ghost_cyan",
-	"ghost_dblue",
-	"ghost_dred",
-	"ghost_dgreen",
-	"ghost_dcyan",
-	"ghost_grey",
-	"ghost_dyellow",
-	"ghost_dpink",
-	"skeleghost",
-	"ghost_purpleswirl",
-	"ghost_rainbow",
-	"ghost_fire",
-	"ghost_funkypurp",
-	"ghost_pinksherbert",
-	"ghost_blazeit",
-	"ghost_mellow",
-	"ghost_camo",
-	"catghost")) //stores the ghost forms that support directional sprites
+GLOBAL_LIST_INIT(ghost_forms_with_directions_list, list("ghost")) //stores the ghost forms that support directional sprites
+GLOBAL_LIST_INIT(ghost_forms_with_accessories_list, list("ghost")) //stores the ghost forms that support hair and other such things
 
-GLOBAL_LIST_INIT(ghost_forms_with_accessories_list, list(
-	"ghost",
-	"ghost_red",
-	"ghost_black",
-	"ghost_blue",
-	"ghost_yellow",
-	"ghost_green",
-	"ghost_pink",
-	"ghost_cyan",
-	"ghost_dblue",
-	"ghost_dred",
-	"ghost_dgreen",
-	"ghost_dcyan",
-	"ghost_grey",
-	"ghost_dyellow",
-	"ghost_dpink",
-	"skeleghost",
-	"ghost_purpleswirl",
-	"ghost_rainbow",
-	"ghost_fire",
-	"ghost_funkypurp",
-	"ghost_pinksherbert",
-	"ghost_blazeit",
-	"ghost_mellow",
-	"ghost_camo",))
-	//stores the ghost forms that support hair and other such things
 GLOBAL_LIST_INIT(ai_core_display_screens, list(
 	":thinking:",
 	"Alien",
@@ -214,29 +159,9 @@ GLOBAL_LIST_INIT(security_depts_prefs, list(SEC_DEPT_RANDOM, SEC_DEPT_NONE, SEC_
 #define DDUFFELBAG "Department Duffel Bag"
 GLOBAL_LIST_INIT(backbaglist, list(DBACKPACK, DSATCHEL, DDUFFELBAG, //everything after this point is a non-department backpack
 	"Hiking Backpack" = /obj/item/storage/backpack,
-	"Medical Backpack" = /obj/item/storage/backpack/medic,
-	"Service Backpack" = /obj/item/storage/backpack/enclave,
-	"Security Backpack" = /obj/item/storage/backpack/security,
-	"Trekkers Pack" = /obj/item/storage/backpack/trekker,
-	"Trophy Rack" = /obj/item/storage/backpack/cultpack,
-	"Explorer Bag" = /obj/item/storage/backpack/explorer,
-	"Grey Duffel Bag" = /obj/item/storage/backpack/duffelbag,
-	"Medical Duffel Bag" = /obj/item/storage/backpack/duffelbag/med,
-	"Security Duffel Bag" = /obj/item/storage/backpack/duffelbag/sec,
 	"Grey Satchel" = /obj/item/storage/backpack/satchel,
-	"Leather Satchel" = /obj/item/storage/backpack/satchel/leather,
-	"Bone Satchel" = /obj/item/storage/backpack/satchel/bone,
-	"Explorer Satchel" = /obj/item/storage/backpack/satchel/explorer,
-	"Medical Satchel" = /obj/item/storage/backpack/satchel/med,
-	"Old Satchel" = /obj/item/storage/backpack/satchel/old,
-	"Service Satchel" = /obj/item/storage/backpack/satchel/enclave,
-	"Security Satchel" = /obj/item/storage/backpack/satchel/sec,
-	"Trekkers Satchel" = /obj/item/storage/backpack/satchel/trekker,
-	"Messenger Bag" = /obj/item/storage/backpack/messenger,
-	"Explorer Messanger Bag" = /obj/item/storage/backpack/messenger/explorer,
-	"Security Messenger Bag" = /obj/item/storage/backpack/messenger/security,
-	"Blueshield Messenger Bag" = /obj/item/storage/backpack/messenger/blue,
-	))
+	"Grey Duffel Bag" = /obj/item/storage/backpack/duffelbag,
+	"Leather Satchel" = /obj/item/storage/backpack/satchel/leather,))
 
 //Suit/Skirt
 #define PREF_SUIT "Jumpsuit"
@@ -345,16 +270,24 @@ GLOBAL_LIST_INIT(roundstart_tongues, list("default","human tongue" = /obj/item/o
 //locked parts are those that your picked species requires to have
 //unlocked parts are those that anyone can choose on customisation regardless
 //parts not in unlocked, but in all, are thus locked
-GLOBAL_LIST_INIT(all_mutant_parts, list(/*"tail_lizard" = "Tail", "mam_tail" = "Tail", "tail_human" = "Tail", "snout" = "Snout", "frills" = "Frills", "spines" = "Spines", "body_markings" = "Body Markings", "mam_body_markings" = "Species Markings" , "mam_ears" = "Ears", "ears" = "Ears", "mam_snouts" = "Snout", "legs" = "Legs", "deco_wings" = "Decorative Wings", "insect_wings" = "Insect Wings", "insect_fluff" = "Insect Fluff", "taur" = "Tauric Body", "insect_markings" = "Insect Markings", "wings" = "Wings", "xenohead" = "Caste Head", "xenotail" = "Tail", "xenodorsal" = "Dorsal Spines", "ipc_screen" = "Screen", "ipc_antenna" = "Antenna", "meat_type" = "Meat Type", "horns" = "Horns"*/))
-GLOBAL_LIST_INIT(unlocked_mutant_parts, list(/*"horns", "insect_fluff"*/))
+GLOBAL_LIST_INIT(all_mutant_parts, list("tail_lizard" = "Tail", "mam_tail" = "Tail", "tail_human" = "Tail", "snout" = "Snout", "frills" = "Frills", "spines" = "Spines", "mam_body_markings" = "Species Markings" , "mam_ears" = "Ears", "ears" = "Ears", "mam_snouts" = "Snout", "legs" = "Legs", "deco_wings" = "Decorative Wings", "insect_wings" = "Insect Wings", "insect_fluff" = "Insect Fluff", "taur" = "Tauric Body", "insect_markings" = "Insect Markings", "wings" = "Wings", "arachnid_legs" = "Arachnid Legs", "arachnid_spinneret" = "Spinneret", "arachnid_mandibles" = "Mandibles", "xenohead" = "Caste Head", "xenotail" = "Tail", "xenodorsal" = "Dorsal Spines", "ipc_screen" = "Screen", "ipc_antenna" = "Antenna", "meat_type" = "Meat Type", "horns" = "Horns"))
+GLOBAL_LIST_INIT(unlocked_mutant_parts, list("horns", "insect_fluff"))
 //parts in either of the above two lists that require a second option that allows them to be coloured
-GLOBAL_LIST_INIT(colored_mutant_parts, list(/*"insect_wings" = "wings_color", "deco_wings" = "wings_color", "horns" = "horns_color"*/))
+GLOBAL_LIST_INIT(colored_mutant_parts, list("insect_wings" = "wings_color", "deco_wings" = "wings_color", "horns" = "horns_color"))
 
 //body ids that have greyscale sprites
-GLOBAL_LIST_INIT(greyscale_limb_types, list("human",/*"moth","lizard","pod","plant","jelly","slime","golem","lum","stargazer","mush","ethereal","snail","c_golem","b_golem","mammal","xeno","ipc","insect","synthliz","avian","aquatic"*/))
+GLOBAL_LIST_INIT(greyscale_limb_types, list("human","moth","lizard","pod","plant","jelly","slime","golem","lum","stargazer","mush","ethereal","snail","c_golem","b_golem","mammal","xeno","ipc","insect","synthliz","avian","aquatic"))
 
 //body ids that have prosthetic sprites
 GLOBAL_LIST_INIT(prosthetic_limb_types, list("xion","bishop","cybersolutions","grayson","hephaestus","nanotrasen","talon"))
 
 //body ids that have non-gendered bodyparts
-GLOBAL_LIST_INIT(nongendered_limb_types, list(/*"fly", "zombie" ,"synth", "shadow", "cultgolem", "agent", "plasmaman", "clockgolem", "clothgolem"*/"smutant"))
+GLOBAL_LIST_INIT(nongendered_limb_types, list("fly", "zombie" ,"synth", "shadow", "cultgolem", "agent", "plasmaman", "clockgolem", "clothgolem", "smutant"))
+
+//list of eye types, corresponding to a respective left and right icon state for the set of eyes
+GLOBAL_LIST_INIT(eye_types, list("normal", "insect", "moth", "double", "double2", "double3", "cyclops"))
+
+//list linking bodypart bitflags to their actual names
+GLOBAL_LIST_INIT(bodypart_names, list(num2text(HEAD) = "Head", num2text(CHEST) = "Chest", num2text(LEG_LEFT) = "Left Leg", num2text(LEG_RIGHT) = "Right Leg", num2text(ARM_LEFT) = "Left Arm", num2text(ARM_RIGHT) = "Right Arm"))
+// list linking bodypart names back to the bitflags
+GLOBAL_LIST_INIT(bodypart_values, list("Head" = num2text(HEAD), "Chest" = num2text(CHEST), "Left Leg" = num2text(LEG_LEFT), "Right Leg" = num2text(LEG_RIGHT), "Left Arm" = num2text(ARM_LEFT), "Right Arm" = num2text(ARM_RIGHT)))

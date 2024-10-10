@@ -14,7 +14,6 @@
 	//socks
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear/socks, GLOB.socks_list)
 	//bodypart accessories (blizzard intensifies)
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, GLOB.tails_list_lizard)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails_animated/lizard, GLOB.animated_tails_list_lizard)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human)
@@ -93,8 +92,6 @@
 
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
 
-	INVOKE_ASYNC(GLOBAL_PROC, /proc/init_ref_coin_values) //so the current procedure doesn't sleep because of UNTIL()
-
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.
 /proc/init_subtypes(prototype, list/L)
@@ -113,10 +110,4 @@
 			L+= path
 		return L
 
-/proc/init_ref_coin_values()
-	for(var/path in typesof(/obj/item/coin))
-		var/obj/item/coin/C = new path
-		UNTIL(C.flags_1 & INITIALIZED_1) //we want to make sure the value is calculated and not null.
-		GLOB.coin_values[path] = C.value
-		qdel(C)
 
