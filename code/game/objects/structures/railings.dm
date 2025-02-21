@@ -22,10 +22,6 @@
 	. = ..()
 	ini_dir = dir
 
-	if(density && flags_1 & ON_BORDER_1) // blocks normal movement from and to the direction it's facing.
-
-	AddComponent(/datum/component/simple_rotation)
-
 /obj/structure/railing/attackby(obj/item/I, mob/living/user, params)
 	..()
 	add_fingerprint(user)
