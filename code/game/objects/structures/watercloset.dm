@@ -312,12 +312,6 @@
 /obj/machinery/shower/Initialize()
 	. = ..()
 
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-
-
 /obj/machinery/shower/update_overlays()
 	. = ..()
 	if(on)
@@ -353,10 +347,6 @@
 				C.slip(80,null,NO_SLIP_WHEN_WALKING)
 		else if(isobj(AM))
 			wash_obj(AM)
-
-/obj/machinery/shower/proc/on_entered(atom/movable/AM)
-	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, PROC_REF(handle_enter), AM)
 
 /obj/machinery/shower/proc/wash_obj(obj/O)
 	. = SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)

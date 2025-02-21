@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		if (picked && is_station_level(picked.z))
 			GLOB.teleportlocs[AR.name] = AR
 
-	sortTim(GLOB.teleportlocs, GLOBAL_PROC_REF(cmp_text_dsc))
+	sortTim(GLOB.teleportlocs, /proc/cmp_text_dsc)
 
 // ===
 
@@ -325,7 +325,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 				if(D.operating)
 					D.nextstate = opening ? FIREDOOR_OPEN : FIREDOOR_CLOSED
 				else if(!(D.density ^ opening))
-					INVOKE_ASYNC(D, (opening ? /obj/machinery/door/firedoor.proc/open : /obj/machinery/door/firedoor.proc/close))
+					INVOKE_ASYNC(D, (opening ? TYPE_PROC_REF(/obj/machinery/door/firedoor, open) : TYPE_PROC_REF(/obj/machinery/door/firedoor, close)))
 
 /area/proc/firealert(obj/source)
 	if(always_unpowered == 1) //no fire alarms in space/asteroid
@@ -394,7 +394,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		var/mob/living/silicon/SILICON = i
 		if(SILICON.triggerAlarm("Burglar", src, cameras, trigger))
 			//Cancel silicon alert after 1 minute
-			addtimer(CALLBACK(SILICON, /mob/living/silicon.proc/cancelAlarm,"Burglar",src,trigger), 600)
+			addtimer(CALLBACK(SILICON, TYPE_PROC_REF(/mob/living/silicon,cancelAlarm),"Burglar",src,trigger), 600)
 
 /area/proc/set_fire_alarm_effects(boolean)
 	fire = boolean
@@ -470,7 +470,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			A.power_light = power_light
 			A.power_equip = power_equip
 			A.power_environ = power_environ
-			INVOKE_ASYNC(A, PROC_REF(power_change))
+			A.power_change()
 	update_icon()
 
 /area/proc/usage(chan)
@@ -540,48 +540,24 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		return
 
 	// Ambience goes down here -- make sure to list each area separately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(L.client && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
-		if(islist(ambience_area))
-			addremove_to_soundloop(L, TRUE)
+	if(L.client && !L.client.ambience_playing && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
+		L.client.ambience_playing = 1
+		SEND_SOUND(L, sound('sound/f13ambience/wasteland.ogg', repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
 
-		if(LAZYLEN(ambientsounds) && !COOLDOWN_TIMELEFT(L.client, area_sound_effect_cooldown) && prob(35))
-			var/sounds_to_play = pick(ambientsounds)
-			var/sound_delay = rand(1 SECONDS, 15 SECONDS)
-			var/sound/S = sound(sounds_to_play[SL_FILE_PATH], repeat = 0, wait = 0, volume = 25, channel = SSsounds.random_available_channel())
-			addtimer(CALLBACK(src, .proc/play_ambient_sound_delayed, S, L), sound_delay, TIMER_STOPPABLE)
-			COOLDOWN_START(L.client, area_sound_effect_cooldown, sounds_to_play[SL_FILE_LENGTH] + sound_delay)
+	if(!(L.client && (L.client.prefs.toggles & SOUND_AMBIENCE)))
+		return //General ambience check is below the ship ambience so one can play without the other
+	var/sound //fortuna edit. lets make this its own variable for convenience
+	if(prob(35))
+		sound = pick(ambientsounds)
 
-		if(LAZYLEN(ambientmusic) && !COOLDOWN_TIMELEFT(L.client, area_music_cooldown) && prob(35)) //fortuna add. re-implements ambient music
-			var/music_to_play = pick(ambientmusic)
-			var/sound_delay = rand(1 SECONDS, 15 SECONDS)
-			var/sound/S = sound(music_to_play[SL_FILE_PATH], repeat = 0, wait = 0, volume = 25, channel = SSsounds.random_available_channel())
-			addtimer(CALLBACK(src, .proc/play_ambient_sound_delayed, S, L), sound_delay, TIMER_STOPPABLE)
-			COOLDOWN_START(L.client, area_music_cooldown, music_to_play[SL_FILE_LENGTH] + sound_delay)
+	if(prob(35)) //fortuna add. re-implements ambient music
+		sound = pick(ambientmusic)
 
-/area/proc/play_ambient_sound_delayed(sound/to_play, mob/living/play_to)
-	SEND_SOUND(play_to, to_play)
-
-/area/proc/addremove_to_soundloop(mob/living/player, add = TRUE)
-	if(!ambience_area)
-		return
-	if(!islist(ambience_area))
-		ambience_area = null
-		return
-	if(!isliving(player))
-		return
-	for(var/loopy in ambience_area)
-		var/datum/looping_sound/our_loop = GLOB.area_sound_loops[loopy]
-		if(!istype(our_loop))
-			initialize_soundloop()
-			our_loop = GLOB.area_sound_loops[loopy]
-			if(!istype(our_loop)) // STILL??
-				ambience_area -= loopy // prevent this from happening ever again!!
-				continue
-		if(add)
-			our_loop.start(player)
-		else
-			our_loop.stop(player, kill = FALSE)
-
+		if(!L.client.played)
+			SEND_SOUND(L, sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE))
+			L.client.played = TRUE
+			addtimer(CALLBACK(L.client, /client/proc/ResetAmbiencePlayed), 600)
+/* MARKED FOR DEATH, part of emergency delagging, removes the whole system to evaluate
 ///Divides total beauty in the room by roomsize to allow us to get an average beauty per tile.
 /area/proc/update_beauty()
 	if(!areasize)

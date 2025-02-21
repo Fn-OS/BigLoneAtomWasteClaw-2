@@ -114,11 +114,6 @@
 
 /obj/item/mine/Initialize()
 	. = ..()
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-
 	if(random)
 		wires = new /datum/wires/explosive/mine/random(src)
 	else
@@ -136,7 +131,7 @@
 	if(user.dropItemToGround(src))
 		anchored = TRUE
 		addtimer(CALLBACK(src, PROC_REF(arm)), 5 SECONDS)
-		to_chat(user, span_notice("You drop the mine and activate the 5-second arming process."))
+		to_chat(user, "<span class='notice'>You drop the mine and activate the 5-second arming process.</span>")
 		return
 
 /obj/item/mine/proc/arm()
@@ -164,7 +159,7 @@
 	if(AM.movement_type & FLYING)
 		return
 
-	INVOKE_ASYNC(src, PROC_REF(triggermine), arrived)
+	triggermine(AM)
 
 /obj/item/mine/proc/triggermine(mob/victim)
 	if(triggered)

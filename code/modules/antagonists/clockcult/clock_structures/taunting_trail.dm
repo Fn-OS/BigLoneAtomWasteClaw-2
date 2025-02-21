@@ -29,12 +29,6 @@
 	transform = matrix()*1.3
 	animate(src, alpha = 100, time = 15)
 
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-
-
 /obj/structure/destructible/clockwork/taunting_trail/Destroy()
 	deltimer(timerid)
 	return ..()

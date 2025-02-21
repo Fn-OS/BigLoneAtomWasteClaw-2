@@ -20,29 +20,6 @@
 		spawn_text=_spawn_text
 	if(_max_mobs)
 		max_mobs = _max_mobs
-	if(_range)
-		range = _range
-	if(_overpopulation_range)
-		overpopulation_range = _overpopulation_range
-	if(_swarm_size)
-		swarm_size = _swarm_size
-	if(_coverable_by_dense_things)
-		coverable_by_dense_things = density_check() ? FALSE : _coverable_by_dense_things
-	if(_randomizer_tag)
-		randomizer_tag = _randomizer_tag
-	if(_randomizer_kind)
-		randomizer_kind = _randomizer_kind
-	if(_randomizer_difficulty)
-		randomizer_difficulty = _randomizer_difficulty
-	if(_spawn_sound)
-		spawn_sound = _spawn_sound
-	if(_infinite)
-		infinite = _infinite
-	if(_delay_start)
-		delay_start = _delay_start
-	initialize_random_mob_spawners()
-	if(randomizer_tag)
-		setup_random_nest()
 
 	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(stop_spawning))
 	RegisterSignal(parent, COMSIG_OBJ_ATTACK_GENERIC, PROC_REF(on_attack_generic))

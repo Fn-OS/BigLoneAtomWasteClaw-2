@@ -53,24 +53,28 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	for(var/i in 1 to number)
 		if(total_effects > 20)
 			return
-		// INVOKE_ASYNC(src, PROC_REF(generate_effect)) // STOP FUCKING ASYNCING
-		generate_effect()
+		INVOKE_ASYNC(src, PROC_REF(generate_effect))
 
 /datum/effect_system/proc/generate_effect()
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/effect = new effect_type(location)
+	if(!location) //no location, no effects
+		return
+	if(location.contents.len > 200)		//Bandaid to prevent server crash exploit
+		return
+	var/obj/effect/E = new effect_type(location)
 	total_effects++
 	var/direction
 	if(cardinals)
 		direction = pick(GLOB.cardinals)
 	else
 		direction = pick(GLOB.alldirs)
-	var/step_amt = pick(1,2,3)
-	var/step_delay = 5
-
-	var/datum/move_loop/loop = SSmove_manager.move(effect, direction, step_delay, timeout = step_delay * step_amt, priority = MOVEMENT_ABOVE_SPACE_PRIORITY)
-	RegisterSignal(loop, COMSIG_PARENT_QDELETING, PROC_REF(decrement_total_effect))
+	var/steps_amt = pick(1,2,3)
+	for(var/j in 1 to steps_amt)
+		sleep(5)
+		step(E,direction)
+	if(!QDELETED(src))
+		addtimer(CALLBACK(src, PROC_REF(decrement_total_effect)), 20)
 
 /datum/effect_system/proc/decrement_total_effect()
 	total_effects--

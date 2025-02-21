@@ -29,6 +29,10 @@
 	if (nref)
 		ref = nref
 
+/datum/browser/proc/user_deleted(datum/source)
+	SIGNAL_HANDLER
+	user = null
+
 /datum/browser/proc/add_head_content(nhead_content)
 	head_content = nhead_content
 

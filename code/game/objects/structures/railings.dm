@@ -23,10 +23,6 @@
 	ini_dir = dir
 
 	if(density && flags_1 & ON_BORDER_1) // blocks normal movement from and to the direction it's facing.
-		var/static/list/loc_connections = list(
-			COMSIG_ATOM_EXIT = PROC_REF(on_exit),
-		)
-		AddElement(/datum/element/connect_loc, loc_connections)
 
 	AddComponent(/datum/component/simple_rotation)
 

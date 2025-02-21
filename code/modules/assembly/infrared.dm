@@ -224,14 +224,6 @@
 
 /obj/effect/beam/i_beam/Crossed(atom/movable/AM as mob|obj)
 	. = ..()
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-
-
-/obj/effect/beam/i_beam/proc/on_entered(atom/movable/AM as mob|obj)
-	SIGNAL_HANDLER
 	if(istype(AM, /obj/effect/beam))
 		return
 	if (isitem(AM))

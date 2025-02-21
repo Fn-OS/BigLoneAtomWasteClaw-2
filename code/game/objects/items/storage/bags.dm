@@ -528,19 +528,6 @@
 
 /obj/item/storage/bag/salvagestorage/ComponentInitialize()
 	. = ..()
-	if(listeningTo == user)
-		return
-	if(listeningTo)
-		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(Pickup_casings))
-	listeningTo = user
-
-
-/obj/item/storage/bag/casings/proc/Pickup_casings(mob/living/user)
-	var/show_message = FALSE
-	var/turf/tile = user.loc
-	if (!isturf(tile))
-		return
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = INFINITY

@@ -64,25 +64,6 @@ SUBSYSTEM_DEF(throwing)
 	var/delayed_time = 0
 	var/last_move = 0
 
-
-/datum/thrownthing/New(thrownthing, target, init_dir, maxrange, speed, thrower, diagonals_first, force, gentle, callback, target_zone)
-	. = ..()
-	src.thrownthing = thrownthing
-	RegisterSignal(thrownthing, COMSIG_PARENT_QDELETING, PROC_REF(on_thrownthing_qdel))
-	src.target_turf = get_turf(target)
-	if(target_turf != target)
-		src.initial_target = WEAKREF(target)
-	src.init_dir = init_dir
-	src.maxrange = maxrange
-	src.speed = speed
-	src.thrower = thrower
-	src.diagonals_first = diagonals_first
-	src.force = force
-	src.gentle = gentle
-	src.callback = callback
-	src.target_zone = target_zone
-
-
 /datum/thrownthing/Destroy()
 	SSthrowing.processing -= thrownthing
 	thrownthing.throwing = null

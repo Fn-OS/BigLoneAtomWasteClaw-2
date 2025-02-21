@@ -35,7 +35,7 @@
 	pixel_y = rand(-10, 10)
 	setDir(pick(GLOB.alldirs))
 	update_icon()
-	addtimer(CALLBACK(src, .proc/cleanup), 18000)
+	addtimer(CALLBACK(src, PROC_REF(cleanup)), 18000)
 
 /obj/item/ammo_casing/Destroy()
 	if(BB)
@@ -89,20 +89,14 @@
 	transform = M
 	pixel_x = rand(-12, 12)
 	pixel_y = rand(-12, 12)
-	if(toss_direction)
-		var/turf/ejected_case_destination = get_casing_destination(toss_direction, max_dist, max_spread)
-		if(!isturf(ejected_case_destination))
-			return
-		throw_at(ejected_case_destination, 10, rand(1,3))
-		return
-	var/turf/this_turf_here = get_turf(src)
-	if(still_warm && this_turf_here && this_turf_here.bullet_sizzle)
-		addtimer(CALLBACK(GLOBAL_PROC,GLOBAL_PROC_REF(playsound), src, 'sound/items/welder.ogg', 20, 1), bounce_delay) //If the turf is made of water and the shell casing is still hot, make a sizzling sound when it's ejected.
-	else if(this_turf_here && this_turf_here.bullet_bounce_sound)
-		addtimer(CALLBACK(GLOBAL_PROC,GLOBAL_PROC_REF(playsound), src, this_turf_here.bullet_bounce_sound, 60, 1), bounce_delay) //Soft / non-solid turfs that shouldn't make a sound when a shell casing is ejected over them.
+	var/turf/T = get_turf(src)
+	if(still_warm && T && T.bullet_sizzle)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(playsound), src, 'sound/items/welder.ogg', 20, 1), bounce_delay) //If the turf is made of water and the shell casing is still hot, make a sizzling sound when it's ejected.
+	else if(T && T.bullet_bounce_sound)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(playsound), src, T.bullet_bounce_sound, 60, 1), bounce_delay) //Soft / non-solid turfs that shouldn't make a sound when a shell casing is ejected over them.
 
 /obj/item/ammo_casing/proc/cleanup()
 	if(isturf(loc))
 		qdel(src)
 	else
-		addtimer(CALLBACK(src, .proc/cleanup), 18000)
+		addtimer(CALLBACK(src, PROC_REF(cleanup)), 18000)

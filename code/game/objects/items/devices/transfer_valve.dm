@@ -16,13 +16,14 @@
 	var/ui_x = 310
 	var/ui_y = 320
 
-/obj/item/transfer_valve/Initialize()
-	. = ..()
-	
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
+/obj/item/transfer_valve/Destroy()
+	tank_one = null
+	tank_two = null
+	if(attached_device)
+		attached_device.on_detach()
+		attached_device = null
+	attacher = null
+	return ..()
 
 /obj/item/transfer_valve/IsAssemblyHolder()
 	return TRUE
@@ -85,7 +86,7 @@
 /obj/item/transfer_valve/Crossed(atom/movable/AM as mob|obj)
 	. = ..()
 	if(attached_device)
-		INVOKE_ASYNC(attached_device, PROC_REF(on_entered), AM)
+		attached_device.Crossed(AM)
 
 /obj/item/transfer_valve/on_attack_hand()//Triggers mousetraps
 	. = ..()
@@ -229,7 +230,7 @@
 
 		merge_gases()
 		for(var/i in 1 to 6)
-			addtimer(CALLBACK(src, /atom/.proc/update_icon), 20 + (i - 1) * 10)
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/,update_icon)), 20 + (i - 1) * 10)
 
 	else if(valve_open && tank_one && tank_two)
 		split_gases()

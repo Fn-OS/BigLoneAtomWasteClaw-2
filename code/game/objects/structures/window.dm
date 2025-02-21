@@ -93,12 +93,7 @@ GLOBAL_LIST_EMPTY(electrochromatic_window_lookup)
 		if(old == ELECTROCHROMATIC_DIMMED)
 			electrochromatic_dim()
 
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_EXIT = PROC_REF(on_exit),
-	)
-
 	if (flags_1 & ON_BORDER_1)
-		AddElement(/datum/element/connect_loc, loc_connections)
 
 
 

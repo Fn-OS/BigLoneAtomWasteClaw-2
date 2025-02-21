@@ -11,11 +11,6 @@
 	RegisterSignal(parent, list(COMSIG_MOVABLE_SECLUDED_LOCATION), PROC_REF(relocate))
 	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED), PROC_REF(check_deletion))
 	RegisterSignal(parent, list(COMSIG_ITEM_IMBUE_SOUL), PROC_REF(check_soul_imbue))
-	RegisterSignal(parent, list(COMSIG_ITEM_PROCESS), PROC_REF(record_position))
-	src.allowed_z = allowed_z
-	src.put_somewhere_random = put_somewhere_random
-	if(!put_somewhere_random)
-		record_position() // may as well
 	src.inform_admins = inform_admins
 	src.allow_death = allow_death
 	check_in_bounds() // Just in case something is being created outside of station/centcom

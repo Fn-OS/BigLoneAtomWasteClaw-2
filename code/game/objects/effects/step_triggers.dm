@@ -10,11 +10,6 @@
 /obj/effect/step_trigger/Initialize()
 	. = ..()
 
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-
 /obj/effect/step_trigger/proc/Trigger(atom/movable/A)
 	return 0
 
