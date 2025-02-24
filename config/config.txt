@@ -401,7 +401,7 @@ ANNOUNCE_ADMIN_LOGOUT
 
 ## Map rotation
 ## You should edit maps.txt to match your configuration when you enable this.
-MAPROTATION
+#MAPROTATION
 
 ## TG-style map rotation
 ## By default, Citadel uses a more traditional method of map voting, where at the end of a round, players are given a full upfront vote.
@@ -545,6 +545,3 @@ FAIL2TOPIC_RULE_NAME _dd_fail2topic
 ## Uncomment to enable global ban DB using the provided URL. The API should expect to receive a ckey at the end of the URL.
 ## More API details can be found here: https://centcom.melonmesa.com
 CENTCOM_BAN_DB https://centcom.melonmesa.com/ban/search
-
-## Uncomment to enable BCCM (IP checking and ASN banning utility). Warning: requires an active database connection.
-USE_BCCM 1
