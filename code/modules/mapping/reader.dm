@@ -40,9 +40,9 @@
 
 	// raw strings used to represent regexes more accurately
 	// '' used to avoid confusing syntax highlighting
-	var/static/regex/dmmRegex = new(@'"([a-zA-Z]+)" = \(((?:.|\n)*?)\)\n(?!\t)|\((\d+),(\d+),(\d+)\) = \{"([a-zA-Z\n]*)"\}', "g")
-	var/static/regex/trimQuotesRegex = new(@'^[\s\n]+"?|"?[\s\n]+$|^"|"$', "g")
-	var/static/regex/trimRegex = new(@'^[\s\n]+|[\s\n]+$', "g")
+	var/regex/dmmRegex
+	var/regex/trimQuotesRegex
+	var/regex/trimRegex
 
 	#ifdef TESTING
 	var/turfsSkipped = 0
@@ -108,7 +108,7 @@
 	ASSERT(y_upper >= y_lower)
 	ASSERT(z_upper >= z_lower)
 	var/stored_index = 1
-
+	dmmRegex = new(@'"([a-zA-Z]+)" = \(((?:.|\n)*?)\)\n(?!\t)|\((\d+),(\d+),(\d+)\) = \{"([a-zA-Z\n]*)"\}', "g")
 	//multiz lool
 	while(dmmRegex.Find(tfile, stored_index))
 		stored_index = dmmRegex.next
@@ -481,6 +481,8 @@
 //text trimming (both directions) helper proc
 //optionally removes quotes before and after the text (for variable name)
 /datum/parsed_map/proc/trim_text(what as text,trim_quotes=0)
+	trimQuotesRegex = new(@'^[\s\n]+"?|"?[\s\n]+$|^"|"$', "g")
+	trimRegex = new(@'^[\s\n]+|[\s\n]+$', "g")
 	if(trim_quotes)
 		return trimQuotesRegex.Replace(what, "")
 	else
@@ -569,6 +571,9 @@
 	return text
 
 /datum/parsed_map/vv_edit_var(var_name, var_value)
+	dmmRegex = new(@'"([a-zA-Z]+)" = \(((?:.|\n)*?)\)\n(?!\t)|\((\d+),(\d+),(\d+)\) = \{"([a-zA-Z\n]*)"\}', "g")
+	trimQuotesRegex = new(@'^[\s\n]+"?|"?[\s\n]+$|^"|"$', "g")
+	trimRegex = new(@'^[\s\n]+|[\s\n]+$', "g")
 	if(var_name == NAMEOF(src, dmmRegex) || var_name == NAMEOF(src, trimQuotesRegex) || var_name == NAMEOF(src, trimRegex))
 		return FALSE
 	return ..()
