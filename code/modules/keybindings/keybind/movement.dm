@@ -201,7 +201,6 @@
 	name = "Upwards"
 	full_name = "Move Upwards"
 	description = "Moves your character up a z-level if possible"
-	keybind_signal = COMSIG_KB_MOVEMENT_ZLEVEL_MOVEUP_DOWN
 
 /datum/keybinding/movement/zlevel_upwards/down(client/user)
 	. = ..()
@@ -215,7 +214,6 @@
 	name = "Downwards"
 	full_name = "Move Downwards"
 	description = "Moves your character down a z-level if possible"
-	keybind_signal = COMSIG_KB_MOVEMENT_ZLEVEL_MOVEDOWN_DOWN
 
 /datum/keybinding/movement/zlevel_downwards/down(client/user)
 	. = ..()
