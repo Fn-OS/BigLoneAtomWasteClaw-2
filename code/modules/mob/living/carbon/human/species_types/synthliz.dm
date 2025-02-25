@@ -28,3 +28,8 @@
 	tail_type = "mam_tail"
 	wagging_type = "mam_waggingtail"
 	species_type = "robotic"
+
+/datum/species/synthliz/qualifies_for_rank(rank, list/features)
+	if(rank in GLOB.legion_positions) /* Legion doesn't like bobots :( */
+		return 0
+	return ..()
