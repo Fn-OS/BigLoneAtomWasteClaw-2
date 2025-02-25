@@ -76,6 +76,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/adminChangeMoney,
 	/client/proc/adminCheckMoney,
 	/client/proc/panicbunker,
+	/client/proc/revokebunkerbypass,
+	/client/proc/addbunkerbypass,
 	/client/proc/BCCM_toggle,
 	/client/proc/BCCM_WhitelistPanel,
 	/client/proc/stop_sounds,
