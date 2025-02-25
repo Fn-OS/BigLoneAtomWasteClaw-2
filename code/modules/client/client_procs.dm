@@ -595,6 +595,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	SSbccm.CollectClientData(src)
 	SSbccm.HandleClientAccessCheck(src)
 	SSbccm.HandleASNbanCheck(src)
+/*
 	//If we aren't an admin, and the flag is set
 	if(CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey])
 		var/living_recs = CONFIG_GET(number/panic_bunker_living)
@@ -617,8 +618,22 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			qdel(query_client_in_db)
 			qdel(src)
 			return
-
+*/
 	if(!query_client_in_db.NextRow())
+		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
+			log_access("Failed Login: [key] - [address] - New account attempting to connect during panic bunker")
+			message_admins("<span class='adminnotice'>Failed Login: [key] - [address] - New account attempting to connect during panic bunker</span>")
+			to_chat(src, {"<span class='notice'>Hi! We have temporarily enabled safety measures that prevents new players from joining currently.<br>Please try again later, or contact a staff on Discord if you have any questions. <br> <br> To join our community, check out our Discord! To gain full access to our Discord, read the rules and post a request in the #access-requests channel under the \"Landing Zone\" category in the Discord server linked here: <a href='https://discord.gg/6RpdCgR'>https://discord.gg/6RpdCgR</a></span>"}) //skyrat-edit
+			var/list/connectiontopic_a = params2list(connectiontopic)
+			var/list/panic_addr = CONFIG_GET(string/panic_server_address)
+			if(panic_addr && !connectiontopic_a["redirect"])
+				var/panic_name = CONFIG_GET(string/panic_server_name)
+				to_chat(src, "<span class='notice'>Sending you to [panic_name ? panic_name : panic_addr].</span>")
+				winset(src, null, "command=.options")
+				src << link("[panic_addr]?redirect=1")
+			qdel(query_client_in_db)
+			qdel(src)
+			return	
 		new_player = 1
 		account_join_date = findJoinDate()
 		var/datum/db_query/query_add_player = SSdbcore.NewQuery({"
