@@ -66,7 +66,7 @@
 		return 0
 	if(rank in GLOB.brotherhood_positions) //don't hate them, just tolorate. 
 		return 0
-	if(rank in GLOB.vault_positions) //purest humans left in america. supposedly.
+	if(rank in GLOB.enclave_positions) //purest humans left in america. supposedly.
 		return 0
 	return ..()
 
