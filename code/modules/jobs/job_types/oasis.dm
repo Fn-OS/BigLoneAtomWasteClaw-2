@@ -125,7 +125,7 @@ Mayor
 	supervisors = "The Mayor"
 	description = "You are the mayor's assistant, you help them with anything and everything they require and make sure trivial problems do not concern them. You handle clerical work, hear complaints, and set meetings. An efficient and smooth running town means a happy mayor."
 	selection_color = "#d7b088"
-	exp_requirements = 0
+	exp_requirements = 750
 
 	outfit = /datum/outfit/job/den/f13secretary
 
@@ -278,9 +278,8 @@ Mayor
 	supervisors = "Oasis Police Department"
 	description = "You've passed the training and tests to join the OPD, and your loyalty to the Chief is absolute - this is your new home, your family. This oasis of civilization will not fall as long as you breathe. Protect its citizens and property, for that is your new purpose."
 	selection_color = "#dcba97"
-	exp_requirements = 0
 	exp_type = EXP_TYPE_FALLOUT
-	exp_requirements = 0
+	exp_requirements = 100
 
 	loadout_options = list(
 	/datum/outfit/loadout/standardpd,
@@ -965,7 +964,7 @@ Mayor
 	supervisors = "The Shopkeeper"
 	description = "Sometimes you need a cog in the machine to keep it turning. You are the cog, capitalism is the machine, and the shopkeeper turns the handle. In return for being taught the ways of commerce and crafting, you help keep the shop orderly and customers happy."
 	selection_color = "#dcba97"
-	exp_requirements = 0
+	exp_requirements = 50
 	outfit = /datum/outfit/job/oasis/f13assist
 
 	access = list(ACCESS_TOWN_BAR, ACCESS_CARGO_BOT)
@@ -1030,7 +1029,7 @@ Mayor
 	supervisors = "free hand of the market"
 	description = "The greed of the United States survived better than its people. You are an organ of this greed. Ensure its continuation."
 	selection_color = "#dcba97"
-	exp_requirements = 0
+	exp_requirements = 100
 
 	outfit = /datum/outfit/job/den/f13shopkeeper
 	access = list(ACCESS_TOWN_BAR, ACCESS_CARGO_BOT)

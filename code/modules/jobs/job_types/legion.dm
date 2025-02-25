@@ -524,7 +524,7 @@ Weapons		Lever shotgun, Grease gun, Repeater carbines, Revolvers, simple guns al
 	spawn_positions = 1
 	description = "Carry the battle of the Legion into battle, and kick some serious ass with your bare hands in the name of Caesar."
 	supervisors = "the Veteran Decanus and Centurion"
-	exp_requirements = 0
+	exp_requirements = 720
 
 	outfit = /datum/outfit/job/CaesarsLegion/Legionary/f13vexillarius
 
@@ -689,7 +689,7 @@ Weapons		Lever shotgun, Grease gun, Repeater carbines, Revolvers, simple guns al
 	selection_color = "#ffdddd"
 	total_positions = 2
 	spawn_positions = 2
-	exp_requirements = 0
+	exp_requirements = 600
 
 	outfit = /datum/outfit/job/CaesarsLegion/Legionary/f13frumentarius
 
