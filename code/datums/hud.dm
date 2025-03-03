@@ -40,6 +40,7 @@ GLOBAL_LIST_INIT(huds, list(
 
 	var/list/next_time_allowed = list() //mobs associated with the next time this hud can be added to them
 	var/list/queued_to_see = list() //mobs that have triggered the cooldown and are queued to see the hud, but do not yet
+	var/hud_exceptions = list() // huduser = list(ofatomswiththeirhudhidden) - aka everyone hates targeted invisiblity
 
 /datum/atom_hud/New()
 	GLOB.all_huds += src
@@ -52,11 +53,14 @@ GLOBAL_LIST_INIT(huds, list(
 	GLOB.all_huds -= src
 	return ..()
 
-/datum/atom_hud/proc/remove_hud_from(mob/M)
+/datum/atom_hud/proc/remove_hud_from(mob/M, absolute = FALSE)
 	if(!M || !hudusers[M])
 		return
-	if (!--hudusers[M])
+	if (absolute || !--hudusers[M])
+		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
 		hudusers -= M
+		if(next_time_allowed[M])
+			next_time_allowed -= M	
 		if(queued_to_see[M])
 			queued_to_see -= M
 		else
@@ -82,7 +86,7 @@ GLOBAL_LIST_INIT(huds, list(
 		return
 	if(!hudusers[M])
 		hudusers[M] = TRUE
-		RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(remove_hud_from), override = TRUE) //both hud users and hud atoms use these signals
+		RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/unregister_mob)
 		if(next_time_allowed[M] > world.time)
 			if(!queued_to_see[M])
 				addtimer(CALLBACK(src, PROC_REF(show_hud_images_after_cooldown), M), next_time_allowed[M] - world.time)
@@ -93,6 +97,23 @@ GLOBAL_LIST_INIT(huds, list(
 				add_to_single_hud(M, A)
 	else
 		hudusers[M]++
+
+/datum/atom_hud/proc/unregister_mob(datum/source, force)
+	SIGNAL_HANDLER
+	remove_hud_from(source, TRUE)
+
+/datum/atom_hud/proc/hide_single_atomhud_from(hud_user,hidden_atom)
+	if(hudusers[hud_user])
+		remove_from_single_hud(hud_user,hidden_atom)
+	if(!hud_exceptions[hud_user])
+		hud_exceptions[hud_user] = list(hidden_atom)
+	else
+		hud_exceptions[hud_user] += hidden_atom
+
+/datum/atom_hud/proc/unhide_single_atomhud_from(hud_user,hidden_atom)
+	hud_exceptions[hud_user] -= hidden_atom
+	if(hudusers[hud_user])
+		add_to_single_hud(hud_user,hidden_atom)
 
 /datum/atom_hud/proc/show_hud_images_after_cooldown(M)
 	if(queued_to_see[M])
@@ -105,7 +126,6 @@ GLOBAL_LIST_INIT(huds, list(
 	if(!A)
 		return FALSE
 	hudatoms |= A
-	RegisterSignal(A, COMSIG_PARENT_QDELETING, PROC_REF(remove_from_hud), override = TRUE) //both hud users and hud atoms use these signals
 	for(var/mob/M in hudusers)
 		if(!queued_to_see[M])
 			add_to_single_hud(M, A)
@@ -115,13 +135,13 @@ GLOBAL_LIST_INIT(huds, list(
 	if(!M || !M.client || !A)
 		return
 	for(var/i in hud_icons)
-		if(A.hud_list[i])
+		if(A.hud_list[i] && (!hud_exceptions[M] || !(A in hud_exceptions[M])))
 			M.client.images |= A.hud_list[i]
 
 //MOB PROCS
 /mob/proc/reload_huds()
 	for(var/datum/atom_hud/hud in GLOB.all_huds)
-		if(hud && hud.hudusers[src])
+		if(hud?.hudusers[src])
 			for(var/atom/A in hud.hudatoms)
 				hud.add_to_single_hud(src, A)
 
