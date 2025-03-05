@@ -1,6 +1,6 @@
 //Synth snouts (This is the most important part)
 /datum/sprite_accessory/snouts/mam_snouts/synthliz
-	recommended_species = list("synthliz")
+	recommended_species = list("human", "mammal", "xeno", "insect", "slimeperson", "jelly", "podweak", "shadekin", "ghoul", "synthliz", "lizard", "ipc")
 	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
 	color_src = MUTCOLORS
 	name = "Synthetic Lizard - Snout"
@@ -27,6 +27,81 @@
 	icon_state = "synthliz_tertunder"
 	matrixed_sections = MATRIX_ALL
 
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/synthliz_comm
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Legacy Systems"
+	icon_state = "synthliz_commodore"
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/synthliz_communder
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Legacy Systems Under"
+	icon_state = "synthliz_commodoreunder"
+	matrixed_sections = MATRIX_ALL
+
+//-->Protogen Snouts
+//Spriter: Ekizius
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen
+	recommended_species = list("human", "mammal", "xeno", "insect", "slimeperson", "jelly", "podweak", "shadekin", "ghoul", "synthliz", "lizard", "ipc")
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MUTCOLORS
+	name = "Protogen - Snout"
+	icon_state = "proto_basic"
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen/protogen_under
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen - Snout Under"
+	icon_state = "proto_under"
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen/protogen_tert
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen - Snout Tertiary"
+	icon_state = "proto_tert"
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen/protogen_tertunder
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen - Snout Tertiary Under"
+	icon_state = "proto_tertunder"
+	matrixed_sections = MATRIX_ALL
+//<--
+
+//-->Pointy protogen snouts
+//Spriter: sampletex
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen_beak
+	recommended_species = list("human", "mammal", "xeno", "insect", "slimeperson", "jelly", "podweak", "shadekin", "ghoul", "synthliz", "lizard", "ipc")
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MUTCOLORS
+	name = "Protogen with Beak - Snout"
+	icon_state = "proto_beak_basic"
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen_beak/protogen_under
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen with Beak - Snout Under"
+	icon_state = "proto_beak_under"
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen_beak/protogen_tert
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen with Beak - Snout Tertiary"
+	icon_state = "proto_beak_tert"
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen_beak/protogen_tertunder
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen with Beak - Snout Tertiary Under"
+	icon_state = "proto_beak_tertunder"
+	matrixed_sections = MATRIX_ALL
 //Synth body markings
 /datum/sprite_accessory/mam_body_markings/synthliz/synthliz_pecs
 	icon = 'modular_citadel/icons/mob/synthliz_body_markings.dmi'
