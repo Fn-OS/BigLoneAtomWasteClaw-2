@@ -3,7 +3,7 @@
 /obj/mecha/proc/GrantActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
 		eject_action.Grant(user, src)
-	internals_action.Grant(user, src)
+//	internals_action.Grant(user, src)
 	cycle_action.Grant(user, src)
 	if(haslights)
 		lights_action.Grant(user, src)
@@ -15,7 +15,7 @@
 /obj/mecha/proc/RemoveActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
 		eject_action.Remove(user)
-	internals_action.Remove(user)
+//	internals_action.Remove(user)
 	cycle_action.Remove(user)
 	if(haslights)
 		lights_action.Remove(user)
@@ -56,7 +56,7 @@
 		to_chat(owner, "<span class='notice'>You stop exiting the mech. Weapons are enabled again.<span>")
 	chassis.is_currently_ejecting = FALSE
 
-
+/*
 /datum/action/innate/mecha/mech_toggle_internals
 	name = "Toggle Internal Airtank Usage"
 	button_icon_state = "mech_internals_off"
@@ -69,7 +69,7 @@
 	chassis.occupant_message("Now taking air from [chassis.use_internal_tank?"internal airtank":"environment"].")
 	chassis.mecha_log_message("Now taking air from [chassis.use_internal_tank?"internal airtank":"environment"].")
 	UpdateButtonIcon()
-
+*/
 /datum/action/innate/mecha/mech_cycle_equip
 	name = "Cycle Equipment"
 	button_icon_state = "mech_cycle_equip_off"

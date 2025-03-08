@@ -69,7 +69,7 @@
 	pixel_y = -138
 
 /obj/mecha/combat/phazon/vertibird/GrantActions(mob/living/user, human_occupant = 0) 
-	internals_action.Grant(user, src)
+//	internals_action.Grant(user, src)
 	cycle_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	stats_action.Grant(user, src)
@@ -81,7 +81,7 @@
 	//rotordown_action.Grant(user, src)
 
 /obj/mecha/combat/phazon/vertibird/RemoveActions(mob/living/user, human_occupant = 0)
-	internals_action.Remove(user)
+//	internals_action.Remove(user)
 	cycle_action.Remove(user)
 	lights_action.Remove(user)
 	stats_action.Remove(user)
@@ -160,7 +160,7 @@
 	turnsound = 'sound/f13machines/vertibird_loop.ogg'
 
 /obj/mecha/combat/phazon/vertibird/ncr/GrantActions(mob/living/user, human_occupant = 0) 
-	internals_action.Grant(user, src)
+//	internals_action.Grant(user, src)
 	cycle_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	stats_action.Grant(user, src)
@@ -173,7 +173,7 @@
 	//rotordown_action.Grant(user, src)
 
 /obj/mecha/combat/phazon/vertibird/ncr/RemoveActions(mob/living/user, human_occupant = 0)
-	internals_action.Remove(user)
+//	internals_action.Remove(user)
 	cycle_action.Remove(user)
 	lights_action.Remove(user)
 	stats_action.Remove(user)
@@ -243,7 +243,7 @@
 	turnsound = 'sound/f13machines/vertibird_loop.ogg'
 
 /obj/mecha/combat/phazon/vertibird/enclave/GrantActions(mob/living/user, human_occupant = 0) 
-	internals_action.Grant(user, src)
+//	internals_action.Grant(user, src)
 	cycle_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	stats_action.Grant(user, src)
@@ -255,7 +255,7 @@
 	//rotordown_action.Grant(user, src)
 
 /obj/mecha/combat/phazon/vertibird/enclave/RemoveActions(mob/living/user, human_occupant = 0)
-	internals_action.Remove(user)
+//	internals_action.Remove(user)
 	cycle_action.Remove(user)
 	lights_action.Remove(user)
 	stats_action.Remove(user)
@@ -318,7 +318,7 @@
 	turnsound = 'sound/f13machines/vertibird_loop.ogg'
 
 /obj/mecha/combat/phazon/vertibird/brotherhood/GrantActions(mob/living/user, human_occupant = 0) 
-	internals_action.Grant(user, src)
+//	internals_action.Grant(user, src)
 	cycle_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	stats_action.Grant(user, src)
@@ -330,7 +330,7 @@
 	//rotordown_action.Grant(user, src)
 
 /obj/mecha/combat/phazon/vertibird/brotherhood/RemoveActions(mob/living/user, human_occupant = 0)
-	internals_action.Remove(user)
+//	internals_action.Remove(user)
 	cycle_action.Remove(user)
 	lights_action.Remove(user)
 	stats_action.Remove(user)
@@ -393,7 +393,7 @@
 	turnsound = 'sound/f13ambience/ambigen_15.ogg'
 
 /obj/mecha/combat/phazon/vertibird/balloon/GrantActions(mob/living/user, human_occupant = 0) 
-	internals_action.Grant(user, src)
+//	internals_action.Grant(user, src)
 	cycle_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	stats_action.Grant(user, src)
@@ -405,7 +405,7 @@
 	//rotordown_action.Grant(user, src)
 
 /obj/mecha/combat/phazon/vertibird/balloon/RemoveActions(mob/living/user, human_occupant = 0)
-	internals_action.Remove(user)
+//	internals_action.Remove(user)
 	cycle_action.Remove(user)
 	lights_action.Remove(user)
 	stats_action.Remove(user)

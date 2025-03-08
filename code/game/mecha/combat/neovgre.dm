@@ -19,14 +19,14 @@
 	turnsound = 'sound/mecha/powerloader_step.ogg'
 
 /obj/mecha/combat/neovgre/GrantActions(mob/living/user, human_occupant = 0) //No Eject action for you sonny jim, your life for Ratvar!
-	internals_action.Grant(user, src)
+//	internals_action.Grant(user, src)
 	cycle_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	stats_action.Grant(user, src)
 	strafing_action.Grant(user, src)
 
 /obj/mecha/combat/neovgre/RemoveActions(mob/living/user, human_occupant = 0)
-	internals_action.Remove(user)
+//	internals_action.Remove(user)
 	cycle_action.Remove(user)
 	lights_action.Remove(user)
 	stats_action.Remove(user)
