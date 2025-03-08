@@ -338,13 +338,13 @@
 				if(cabin_air.return_temperature() > max_temperature/2)
 					take_damage(4/round(max_temperature/cabin_air.return_temperature(),0.1), BURN, 0, 0)
 */
-		if(internal_damage & MECHA_INT_TEMP_CONTROL)
+/*		if(internal_damage & MECHA_INT_TEMP_CONTROL)
 			internal_temp_regulation = 0
 
 		if(internal_damage & MECHA_INT_TANK_BREACH) //remove some air from internal tank
-//			if(internal_tank)
-//				assume_air_ratio(internal_tank.return_air(), 0.1)
-
+			if(internal_tank)
+				assume_air_ratio(internal_tank.return_air(), 0.1)
+*/
 		if(internal_damage & MECHA_INT_SHORT_CIRCUIT)
 			if(get_charge())
 				spark_system.start()
