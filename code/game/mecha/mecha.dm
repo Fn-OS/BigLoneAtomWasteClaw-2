@@ -67,12 +67,13 @@
 
 	var/bumpsmash = 0 //Whether or not the mech destroys walls by running into it.
 	//inner atmos
+/*
 	var/use_internal_tank = 0
 	var/internal_tank_valve = ONE_ATMOSPHERE
 	var/obj/machinery/portable_atmospherics/canister/internal_tank
 	var/datum/gas_mixture/cabin_air
 	var/obj/machinery/atmospherics/components/unary/portables_connector/connected_port = null
-
+*/
 	var/obj/item/radio/mech/radio
 	var/list/trackers = list()
 
@@ -106,7 +107,7 @@
 
 	//Action datums
 	var/datum/action/innate/mecha/mech_eject/eject_action = new
-	var/datum/action/innate/mecha/mech_toggle_internals/internals_action = new
+//	var/datum/action/innate/mecha/mech_toggle_internals/internals_action = new
 	var/datum/action/innate/mecha/mech_cycle_equip/cycle_action = new
 	var/datum/action/innate/mecha/mech_toggle_lights/lights_action = new
 	var/datum/action/innate/mecha/mech_view_stats/stats_action = new
@@ -157,8 +158,8 @@
 	events = new
 	icon_state += "-open"
 	add_radio()
-	add_cabin()
-	add_airtank()
+//	add_cabin()
+//	add_airtank()
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
 	smoke_system.set_up(3, src)
@@ -208,26 +209,26 @@
 			WR.crowbar_salvage += cell
 			cell.forceMove(WR)
 			cell.charge = rand(0, cell.charge)
-		if(internal_tank)
-			WR.crowbar_salvage += internal_tank
-			internal_tank.forceMove(WR)
+//		if(internal_tank)
+//			WR.crowbar_salvage += internal_tank
+//			internal_tank.forceMove(WR)
 	else
 		for(var/obj/item/mecha_parts/mecha_equipment/E in equipment)
 			E.detach(loc)
 			qdel(E)
 		if(cell)
 			qdel(cell)
-		if(internal_tank)
-			qdel(internal_tank)
+//		if(internal_tank)
+//			qdel(internal_tank)
 		if(AI)
 			AI.gib() //No wreck, no AI to recover
 	STOP_PROCESSING(SSobj, src)
 	GLOB.poi_list.Remove(src)
 	equipment.Cut()
 	cell = null
-	internal_tank = null
-	assume_air(cabin_air)
-	cabin_air = null
+//	internal_tank = null
+//	assume_air(cabin_air)
+//	cabin_air = null
 	qdel(spark_system)
 	spark_system = null
 	qdel(smoke_system)
@@ -261,18 +262,18 @@
 ////////////////////////
 ////// Helpers /////////
 ////////////////////////
-
+/*
 /obj/mecha/proc/add_airtank()
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
 	return internal_tank
-
+*/
 /obj/mecha/proc/add_cell(obj/item/stock_parts/cell/C=null)
 	if(C)
 		C.forceMove(src)
 		cell = C
 		return
 	cell = new /obj/item/stock_parts/cell/upgraded(src)
-
+/*
 /obj/mecha/proc/add_cabin()
 	cabin_air = new
 	cabin_air.set_temperature(T20C)
@@ -281,7 +282,7 @@
 	cabin_air.set_moles(GAS_N2,N2STANDARD*cabin_air.return_volume()/(R_IDEAL_GAS_EQUATION*cabin_air.return_temperature()))
 
 	return cabin_air
-
+*/
 /obj/mecha/proc/add_radio()
 	radio = new(src)
 	radio.name = "[src] radio"
@@ -326,7 +327,7 @@
 		if(internal_damage & MECHA_INT_FIRE)
 			if(!(internal_damage & MECHA_INT_TEMP_CONTROL) && prob(5))
 				clearInternalDamage(MECHA_INT_FIRE)
-			if(internal_tank)
+/*			if(internal_tank)
 				var/datum/gas_mixture/int_tank_air = internal_tank.return_air()
 				if(int_tank_air.return_pressure() > internal_tank.maximum_pressure && !(internal_damage & MECHA_INT_TANK_BREACH))
 					setInternalDamage(MECHA_INT_TANK_BREACH)
@@ -336,20 +337,20 @@
 				cabin_air.set_temperature(min(6000+T0C, cabin_air.return_temperature()+rand(10,15)))
 				if(cabin_air.return_temperature() > max_temperature/2)
 					take_damage(4/round(max_temperature/cabin_air.return_temperature(),0.1), BURN, 0, 0)
-
-		if(internal_damage & MECHA_INT_TEMP_CONTROL)
+*/
+/*		if(internal_damage & MECHA_INT_TEMP_CONTROL)
 			internal_temp_regulation = 0
 
 		if(internal_damage & MECHA_INT_TANK_BREACH) //remove some air from internal tank
 			if(internal_tank)
 				assume_air_ratio(internal_tank.return_air(), 0.1)
-
+*/
 		if(internal_damage & MECHA_INT_SHORT_CIRCUIT)
 			if(get_charge())
 				spark_system.start()
 				cell.charge -= min(20,cell.charge)
 				cell.maxcharge -= min(20,cell.maxcharge)
-
+/*
 	if(internal_temp_regulation)
 		if(cabin_air && cabin_air.return_volume() > 0)
 			var/delta = cabin_air.return_temperature() - T20C
@@ -374,7 +375,7 @@
 			if(pressure_delta > 0) //if location pressure is lower than cabin pressure
 				transfer_moles = pressure_delta*cabin_air.return_volume()/(cabin_air.return_temperature() * R_IDEAL_GAS_EQUATION)
 				cabin_air.transfer_to(t_air, transfer_moles)
-
+*/
 	if(occupant)
 		if(cell)
 			var/cellcharge = cell.charge/cell.maxcharge
@@ -511,9 +512,9 @@
 	. = ..()
 	if(.)
 		events.fireEvent("onMove",get_turf(src))
-	if (internal_tank.disconnect()) // Something moved us and broke connection
-		occupant_message("<span class='warning'>Air port connection teared off!</span>")
-		mecha_log_message("Lost connection to gas port.")
+//	if (internal_tank.disconnect()) // Something moved us and broke connection
+//		occupant_message("<span class='warning'>Air port connection teared off!</span>")
+//		mecha_log_message("Lost connection to gas port.")
 
 /obj/mecha/setDir(newdir)
 	. = ..()
@@ -543,11 +544,11 @@
 		user.forceMove(get_turf(src))
 		to_chat(user, "<span class='notice'>You climb out from [src].</span>")
 		return 0
-	if(internal_tank.connected_port)
-		if(world.time - last_message > 20)
-			occupant_message("<span class='warning'>Unable to move while connected to the air system port!</span>")
-			last_message = world.time
-		return 0
+//	if(internal_tank.connected_port)
+//		if(world.time - last_message > 20)
+//			occupant_message("<span class='warning'>Unable to move while connected to the air system port!</span>")
+//			last_message = world.time
+//		return 0
 	if(state)
 		occupant_message("<span class='danger'>Maintenance protocols in effect.</span>")
 		return
@@ -811,7 +812,7 @@
 /////////////////////////////////////
 ////////  Atmospheric stuff  ////////
 /////////////////////////////////////
-
+/*
 /obj/mecha/remove_air(amount)
 	if(use_internal_tank)
 		return cabin_air.remove(amount)
@@ -841,7 +842,7 @@
 
 /obj/mecha/portableConnectorReturnAir()
 	return internal_tank.return_air()
-
+*/
 
 /obj/mecha/MouseDrop_T(mob/M, mob/user)
 	if (!user.canUseTopic(src) || (user != M))
