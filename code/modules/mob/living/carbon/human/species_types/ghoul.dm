@@ -8,7 +8,7 @@
 	id = "ghoul"
 	say_mod = "rasps"
 	limbs_id = "ghoul"
-	species_traits = list(HAIR,FACEHAIR,HAS_BONE,NOGENITALS, NOBLOOD)
+	species_traits = list(HAIR,FACEHAIR,HAS_BONE,NOBLOOD)
 	inherent_traits = list(TRAIT_RADIMMUNE, TRAIT_VIRUSIMMUNE, TRAIT_NOBREATH, TRAIT_NOHARDCRIT, TRAIT_NOSOFTCRIT, TRAIT_GHOULMELEE, TRAIT_EASYDISMEMBER, TRAIT_EASYLIMBDISABLE, TRAIT_LIMBATTACHMENT, TRAIT_FAKEDEATH)
 	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	punchstunthreshold = 9
@@ -66,7 +66,7 @@
 		return 0
 	if(rank in GLOB.brotherhood_positions) //don't hate them, just tolorate. 
 		return 0
-	if(rank in GLOB.vault_positions) //purest humans left in america. supposedly.
+	if(rank in GLOB.enclave_positions) //purest humans left in america. supposedly.
 		return 0
 	return ..()
 

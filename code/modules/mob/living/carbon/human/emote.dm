@@ -82,36 +82,36 @@
 	key_third_person = "shrugs"
 	message = "shrugs."
 
-// /datum/emote/living/carbon/human/wag
-//	key = "wag"
-//	key_third_person = "wags"
-//	message = "wags their tail."
+/datum/emote/living/carbon/human/wag
+	key = "wag"
+	key_third_person = "wags"
+	message = "wags their tail."
 
-// /datum/emote/living/carbon/human/wag/run_emote(mob/user, params)
-//	. = ..()
-//	if(!.)
-//		return
-//	var/mob/living/carbon/human/H = user
-//	if(!istype(H) || !H.dna || !H.dna.species || !H.dna.species.can_wag_tail(H))
-//		return
-//	if(!H.dna.species.is_wagging_tail())
-//		H.dna.species.start_wagging_tail(H)
-//	else
-//		H.dna.species.stop_wagging_tail(H)
+/datum/emote/living/carbon/human/wag/run_emote(mob/user, params)
+	. = ..()
+	if(!.)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!istype(H) || !H.dna || !H.dna.species || !H.dna.species.can_wag_tail(H))
+		return
+	if(!H.dna.species.is_wagging_tail())
+		H.dna.species.start_wagging_tail(H)
+	else
+		H.dna.species.stop_wagging_tail(H)
 
-// /datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE)
-//	if(!..())
-//		return FALSE
-//	var/mob/living/carbon/human/H = user
-//	return H.dna && H.dna.species && H.dna.species.can_wag_tail(user)
+/datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE)
+	if(!..())
+		return FALSE
+	var/mob/living/carbon/human/H = user
+	return H.dna && H.dna.species && H.dna.species.can_wag_tail(user)
 
-// /datum/emote/living/carbon/human/wag/select_message_type(mob/user)
-//	. = ..()
-//	var/mob/living/carbon/human/H = user
-//	if(!H.dna || !H.dna.species)
-//		return
-//	if(H.dna.species.is_wagging_tail())
-//		. = null
+/datum/emote/living/carbon/human/wag/select_message_type(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(!H.dna || !H.dna.species)
+		return
+	if(H.dna.species.is_wagging_tail())
+		. = null
 
 /datum/emote/living/carbon/human/wing
 	key = "wing"
@@ -165,7 +165,7 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
 	emote_type = EMOTE_AUDIBLE
 
-/* Fortuna edit: robot sound emotes disabled
+
 /datum/emote/human/buzz
 	key = "buzz"
 	key_third_person = "buzzes"
@@ -190,12 +190,12 @@
 	key_third_person = "chimes"
 	message = "chimes."
 	sound = 'sound/machines/chime.ogg'
-*/
+
 
 //rock paper scissors emote handling
 /mob/living/carbon/human/proc/beginRockPaperScissors(chosen_move)
 	GLOB.rockpaperscissors_players[src] = list(chosen_move, ROCKPAPERSCISSORS_NOT_DECIDED)
-	do_after_advanced(src, ROCKPAPERSCISSORS_TIME_LIMIT, src, DO_AFTER_REQUIRES_USER_ON_TURF|DO_AFTER_NO_COEFFICIENT|DO_AFTER_NO_PROGRESSBAR|DO_AFTER_DISALLOW_MOVING_ABSOLUTE_USER, CALLBACK(src, .proc/rockpaperscissors_tick))
+	do_after_advanced(src, ROCKPAPERSCISSORS_TIME_LIMIT, src, DO_AFTER_REQUIRES_USER_ON_TURF|DO_AFTER_NO_COEFFICIENT|DO_AFTER_NO_PROGRESSBAR|DO_AFTER_DISALLOW_MOVING_ABSOLUTE_USER, CALLBACK(src, PROC_REF(rockpaperscissors_tick)))
 	var/new_entry = GLOB.rockpaperscissors_players[src]
 	if(new_entry[2] == ROCKPAPERSCISSORS_NOT_DECIDED)
 		to_chat(src, "You put your hand back down.")

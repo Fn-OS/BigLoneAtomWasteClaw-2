@@ -1,6 +1,6 @@
 //Synth snouts (This is the most important part)
 /datum/sprite_accessory/snouts/mam_snouts/synthliz
-	recommended_species = list("synthliz")
+	recommended_species = list("human", "mammal", "xeno", "insect", "slimeperson", "jelly", "podweak", "shadekin", "ghoul", "synthliz", "lizard", "ipc")
 	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
 	color_src = MUTCOLORS
 	name = "Synthetic Lizard - Snout"
@@ -11,35 +11,116 @@
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Snout Under"
 	icon_state = "synthliz_under"
+	matrixed_sections = MATRIX_RED_GREEN
 
 /datum/sprite_accessory/snouts/mam_snouts/synthliz/synthliz_tert
 	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Snout Tertiary"
 	icon_state = "synthliz_tert"
+	matrixed_sections = MATRIX_RED_BLUE
 
 /datum/sprite_accessory/snouts/mam_snouts/synthliz/synthliz_tertunder
 	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Snout Tertiary Under"
 	icon_state = "synthliz_tertunder"
+	matrixed_sections = MATRIX_ALL
 
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/synthliz_comm
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Legacy Systems"
+	icon_state = "synthliz_commodore"
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/synthliz_communder
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Legacy Systems Under"
+	icon_state = "synthliz_commodoreunder"
+	matrixed_sections = MATRIX_ALL
+
+//-->Protogen Snouts
+//Spriter: Ekizius
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen
+	recommended_species = list("human", "mammal", "xeno", "insect", "slimeperson", "jelly", "podweak", "shadekin", "ghoul", "synthliz", "lizard", "ipc")
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MUTCOLORS
+	name = "Protogen - Snout"
+	icon_state = "proto_basic"
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen/protogen_under
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen - Snout Under"
+	icon_state = "proto_under"
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen/protogen_tert
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen - Snout Tertiary"
+	icon_state = "proto_tert"
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen/protogen_tertunder
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen - Snout Tertiary Under"
+	icon_state = "proto_tertunder"
+	matrixed_sections = MATRIX_ALL
+//<--
+
+//-->Pointy protogen snouts
+//Spriter: sampletex
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen_beak
+	recommended_species = list("human", "mammal", "xeno", "insect", "slimeperson", "jelly", "podweak", "shadekin", "ghoul", "synthliz", "lizard", "ipc")
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MUTCOLORS
+	name = "Protogen with Beak - Snout"
+	icon_state = "proto_beak_basic"
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen_beak/protogen_under
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen with Beak - Snout Under"
+	icon_state = "proto_beak_under"
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen_beak/protogen_tert
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen with Beak - Snout Tertiary"
+	icon_state = "proto_beak_tert"
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/snouts/mam_snouts/synthliz/protogen_beak/protogen_tertunder
+	icon = 'modular_citadel/icons/mob/synthliz_snouts.dmi'
+	color_src = MATRIXED
+	name = "Protogen with Beak - Snout Tertiary Under"
+	icon_state = "proto_beak_tertunder"
+	matrixed_sections = MATRIX_ALL
 //Synth body markings
 /datum/sprite_accessory/mam_body_markings/synthliz/synthliz_pecs
 	icon = 'modular_citadel/icons/mob/synthliz_body_markings.dmi'
 	name = "Synthetic Lizard - Pecs"
 	icon_state = "synthlizpecs"
+	covered_limbs = list("Chest" = MATRIX_GREEN)
 
 /datum/sprite_accessory/mam_body_markings/synthliz/synthliz_pecslight
 	icon = 'modular_citadel/icons/mob/synthliz_body_markings.dmi'
 	name = "Synthetic Lizard - Pecs Light"
 	icon_state = "synthlizpecslight"
+	covered_limbs = list("Chest" = MATRIX_GREEN_BLUE)
 
 /datum/sprite_accessory/mam_body_markings/synthliz
 	recommended_species = list("synthliz")
 	icon = 'modular_citadel/icons/mob/synthliz_body_markings.dmi'
 	name = "Synthetic Lizard - Plates"
 	icon_state = "synthlizscutes"
+	covered_limbs = list("Chest" = MATRIX_GREEN)
 
 //Synth tails
 /datum/sprite_accessory/tails/mam_tails/synthliz
@@ -81,6 +162,7 @@
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Horns Light"
 	icon_state = "synth_hornslight"
+	matrixed_sections = MATRIX_RED_BLUE
 
 /datum/sprite_accessory/antenna/synthliz/synth_short
 	icon = 'modular_citadel/icons/mob/synthliz_antennas.dmi'
@@ -99,6 +181,7 @@
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Sharp Light"
 	icon_state = "synth_sharplight"
+	matrixed_sections = MATRIX_RED_BLUE
 
 /datum/sprite_accessory/antenna/synthliz/synthliz_thick
 	icon = 'modular_citadel/icons/mob/synthliz_antennas.dmi'
@@ -111,6 +194,7 @@
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Thick Light"
 	icon_state = "synth_thicklight"
+	matrixed_sections = MATRIX_RED_BLUE
 
 //Synth Taurs (Ported from Virgo)
 /datum/sprite_accessory/taur/synthliz
@@ -118,6 +202,7 @@
 	icon_state = "synthlizard"
 	taur_mode = STYLE_PAW_TAURIC
 	recommended_species = list("synthliz")
+	matrixed_sections = MATRIX_RED_GREEN
 
 /datum/sprite_accessory/taur/synthliz/inv
 	name = "Virgo - Synthetic Lizard (Inverted)"

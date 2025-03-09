@@ -59,3 +59,8 @@
 		return
 	H.dna.features["ipc_screen"] = new_ipc_screen
 	H.update_body()
+
+/datum/species/ipc/qualifies_for_rank(rank, list/features)
+	if(rank in GLOB.legion_positions) /* Legion doesn't like bobots :( */
+		return 0
+	return ..()

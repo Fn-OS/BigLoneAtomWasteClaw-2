@@ -35,3 +35,53 @@
 	CONFIG_SET(flag/panic_bunker_interview, new_interview)
 	log_admin("[key_name(usr)] has toggled the Panic Bunker's interview system, it is now [new_interview ? "enabled" : "disabled"].")
 	message_admins("[key_name(usr)] has toggled the Panic Bunker's interview system, it is now [new_interview ? "enabled" : "disabled"].")
+
+
+/client/proc/addbunkerbypass()
+	set name = "Add PB Bypass"
+	set desc = "Allows a given ckey to connect despite the panic bunker for a given round."
+	set category = "Admin.Server"
+	var/ckeytobypass = input(usr, "Please input a ckey:", "Ckey Notice") as text|null	
+	if(!CONFIG_GET(flag/sql_enabled))
+		to_chat(usr, span_adminnotice("The Database is not enabled!"))
+		return
+
+	GLOB.bunker_passthrough |= ckey(ckeytobypass)
+	GLOB.bunker_passthrough[ckey(ckeytobypass)] = world.realtime
+	SSpersistence.save_panic_bunker() //we can do this every time, it's okay
+	log_admin("[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
+	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
+
+/client/proc/revokebunkerbypass()
+	set name = "Revoke PB Bypass"
+	set desc = "Revoke's a ckey's permission to bypass the panic bunker for a given round."
+	set category = "Admin.Server"
+	var/ckeytobypass = input(usr, "Please input a ckey:", "Ckey Notice") as text|null
+	if(!CONFIG_GET(flag/sql_enabled))
+		to_chat(usr, span_adminnotice("The Database is not enabled!"))
+		return
+
+	GLOB.bunker_passthrough -= ckey(ckeytobypass)
+	SSpersistence.save_panic_bunker()
+	log_admin("[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
+	message_admins("[key_name_admin(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
+
+/datum/controller/subsystem/persistence/proc/load_panic_bunker()
+	var/bunker_path = file("data/bunker_passthrough.json")
+	if(fexists(bunker_path))
+		var/list/json = json_decode(file2text(bunker_path))
+		GLOB.bunker_passthrough = json["data"]
+		for(var/ckey in GLOB.bunker_passthrough)
+			if(daysSince(GLOB.bunker_passthrough[ckey]) >= CONFIG_GET(number/max_bunker_days))
+				GLOB.bunker_passthrough -= ckey
+
+/datum/controller/subsystem/persistence/proc/save_panic_bunker()
+	var/json_file = file("data/bunker_passthrough.json")
+	var/list/file_data = list()
+	file_data["data"] = GLOB.bunker_passthrough
+	fdel(json_file)
+	WRITE_FILE(json_file,json_encode(file_data))
+
+/datum/config_entry/number/max_bunker_days
+	default = 7
+	min_val = 1

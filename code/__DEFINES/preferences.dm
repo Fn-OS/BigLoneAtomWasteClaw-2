@@ -77,7 +77,7 @@
 #define EXP_TYPE_NCR			"New California Republic"
 #define EXP_TYPE_RANGER			"Ranger"
 #define EXP_TYPE_OASISCOMMAND	"Oasis Command"
-#define EXP_TYPE_KEBAB 			"Kebab"
+#define EXP_TYPE_OASIS 			"Oasis"
 #define EXP_TYPE_LEGIONCOMMAND	"Caesar's Legion Command"
 #define EXP_TYPE_LEGION			"Caesar's Legion"
 #define EXP_TYPE_WASTELAND		"Wasteland"

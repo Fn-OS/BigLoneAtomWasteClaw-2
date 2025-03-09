@@ -16,6 +16,11 @@
 	if(!allowed)
 		allowed = GLOB.security_vest_allowed
 */
+
+// Temporal fix until digitigrade-adapted sprites are done
+/obj/item/clothing/suit/armor/f13
+	mutantrace_variation = NONE
+
 //Leather and metal
 /obj/item/clothing/suit/armor/f13/leather_jacket
 	name = "leather jacket"
@@ -552,7 +557,7 @@
 			emped = TRUE
 			slowdown += induced_slowdown
 			L.update_equipment_speed_mods()
-			addtimer(CALLBACK(src, .proc/end_emp_effect, induced_slowdown), 50)
+			addtimer(CALLBACK(src, PROC_REF(end_emp_effect), induced_slowdown), 50)
 	return
 
 /obj/item/clothing/suit/armor/f13/power_armor/proc/end_emp_effect(slowdown_induced)
