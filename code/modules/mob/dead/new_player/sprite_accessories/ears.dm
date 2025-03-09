@@ -175,6 +175,7 @@
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
 
+
 /******************************************
 *************** Furry Ears ****************
 *******************************************/
@@ -329,3 +330,22 @@
 /datum/sprite_accessory/ears/mam_ears/wolf
 	name = "Wolf"
 	icon_state = "wolf"
+<<<<<<< Updated upstream
+=======
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/ears/mam_ears/zorgoia
+	name = "Zorgoia"
+	icon_state = "zorgoia"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/ears/mam_ears/basitin
+	name = "Basitin"
+	icon_state = "basitin"
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = MUTCOLORS
+	extra2 = TRUE
+	extra2_color_src = MUTCOLORS2
+
+>>>>>>> Stashed changes
