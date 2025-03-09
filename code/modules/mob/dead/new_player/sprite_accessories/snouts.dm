@@ -472,3 +472,10 @@
 	name = "WahCoon ALT (Top)"
 	icon_state = "fwahalt"
 	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/cat
+	name = "Cat"
+	icon_state = "cat"
+	color_src = MUTCOLORS
+	extra2 = TRUE
+	extra2_color_src = MUTCOLORS2

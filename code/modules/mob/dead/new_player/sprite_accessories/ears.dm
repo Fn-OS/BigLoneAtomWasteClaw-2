@@ -311,6 +311,7 @@
 	matrixed_sections = MATRIX_RED
 
 
+
 /******************************************
 *************** Furry Ears ****************
 *******************************************/
@@ -530,3 +531,10 @@
 	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED
 
+/datum/sprite_accessory/ears/mam_ears/basitin
+	name = "Basitin"
+	icon_state = "basitin"
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = MUTCOLORS
+	extra2 = TRUE
+	extra2_color_src = MUTCOLORS2
