@@ -1151,6 +1151,11 @@
 	item_state = "mutie_metal_armour_mk2"
 	armor = list("melee" = 45, "bullet" = 45, "laser" = 45, "energy" = 20, "bomb" = 50, "bio" = 40, "rad" = 10, "fire" = 60, "acid" = 10)
 
+/obj/item/clothing/suit/f13
+	name = "F13 suit"
+	desc = "A debug F13 suit! You shouldn't see this!"
+	mutantrace_variation = NONE //So it plays nice with digi legs.
+
 //TRIBALS
 
 /obj/item/clothing/suit/f13/tribal
