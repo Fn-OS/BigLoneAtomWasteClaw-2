@@ -56,7 +56,7 @@
 	item_state = "combat_helmet"
 	armor = list("melee" = 40, "bullet" = 40, "laser" = 40, "energy" = 25, "bomb" = 55, "bio" = 60, "rad" = 15, "fire" = 60, "acid" = 30, "wound" = 55)
 	strip_delay = 50
-	flags_inv = HIDEEARS|HIDEHAIR
+	flags_inv = HIDEHAIR
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
 	dynamic_hair_suffix = ""
 	dynamic_fhair_suffix = ""
@@ -80,7 +80,7 @@
 	icon_state = "combat_helmet_mk2"
 	item_state = "combat_helmet_mk2"
 	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 35, "bomb" = 65, "bio" = 65, "rad" = 15, "fire" = 65, "acid" = 35, "wound" = 60)
-	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR
+	flags_inv = HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 	salvage_loot = list(/obj/item/stack/crafting/armor_plate = 5)
 
